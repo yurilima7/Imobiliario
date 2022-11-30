@@ -13,6 +13,11 @@
     margin-right: 0;
 }
 
+body{
+    height: 100vh;
+    width: 100%;
+}
+
 .limitContainer {
     margin: 0 auto;
     width: 80%;
