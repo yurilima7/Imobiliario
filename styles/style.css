@@ -61,6 +61,7 @@ body{
     margin-right: 10px;
     margin-bottom: 10px;
     transition: all 0.3s ease-out;
+    cursor: pointer;
 }
 
 .navBar button:hover {
@@ -149,4 +150,91 @@ body{
     text-align: center;
     font-size: 16px;
     font-family: 'Bebas Neue';
+}
+
+.formPopup {
+    margin: 5rem auto;
+    background-color: white;
+    height: 766px;
+    width: 727px;
+    border-radius: 10px;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.overlay:target {
+    visibility: visible;
+    opacity: 1;
+}
+
+.popup .close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    transition: all 200ms;
+    font-family: 'Bebas Neue';
+    font-size: 30px;
+    font-weight: 400;
+    text-decoration: none;
+    color: black;
+}
+
+.popup .close:hover {
+    color: #06D85F;
+}
+
+.rowBar {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+}
+
+.rowBar h1 {
+    margin: 15px auto;
+    font-family: 'Bebas Neue';
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 36px;
+    letter-spacing: 0em;
+}
+
+.lineHorizontal {
+    position: absolute;
+    width: 727px;
+    border: 1px solid #808080;
+}
+
+.msg {
+    margin: 50px 20px;
+    font-family: 'Archivo';
+    font-size: 30px;
+    font-weight: 400;
+    letter-spacing: 0em;
+    text-align: left;
+}
+
+.form {
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.form input {
+    width: 100%;
+    height: 80px;
+    border-radius: 10px;
+    margin-top: 20px;
+    font-family: 'Archivo';
+    font-style: normal;
+    font-weight: 400;
+    color: #000;
 }
