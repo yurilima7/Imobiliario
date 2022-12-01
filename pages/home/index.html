@@ -19,7 +19,7 @@
             <a class="navItem" href="#">Ajuda</a>
 
             <div>
-                <button>Cadastrar</button>
+                <a href="#registerForm"><button>Cadastrar</button></a>
                 <a href="#loginForm"><button>Entrar</button></a>
             </div>
             
@@ -159,17 +159,37 @@
     <div id="loginForm" class="overlay">
         <div class="formPopup">
             <div class="rowBar">
-                <a class="close" href="#">X</a>
+                <a class="close" href="#">&times;</a>
                 <h1>LOGIN</h1>
             </div>
 
             <div class="lineHorizontal"></div>
 
-            <div class="msg">Bem-Vindo ao E-RENT</div>
+            <h2>Bem-Vindo ao E-RENT</h2>
 
             <div class="form">
-                <input type="text" name="E-MAIL" id="" placeholder="E-MAIL">
-                <input type="password" name="PASSWORD" id="" placeholder="SENHA">
+                <input type="text" name="E-MAIL" id="" placeholder="E-MAIL" required>
+                <input type="password" name="PASSWORD" id="" placeholder="SENHA" required>
+                <button>ENTRAR</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="registerForm" class="overlay">
+        <div class="formPopup">
+            <div class="rowBar">
+                <a class="close" href="#">&times;</a>
+                <h1>CADASTRAR</h1>
+            </div>
+
+            <div class="lineHorizontal"></div>
+
+            <h2>Bem-Vindo ao E-RENT</h2>
+
+            <div class="form">
+                <input type="text" name="E-MAIL" id="" placeholder="E-MAIL" required>
+                <input type="password" name="PASSWORD" id="" placeholder="SENHA" required>
+                <button>CONTINUAR</button>
             </div>
         </div>
     </div>
