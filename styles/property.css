@@ -1,0 +1,141 @@
+@font-face {
+    font-family: 'Bebas Neue';
+    src: url('../fonts/BebasNeue-Regular.ttf');
+}
+
+@font-face {
+    font-family: 'Archivo';
+    src: url('../fonts/Archivo-Regular.ttf');
+}
+
+* {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+body{
+    height: 100vh;
+    width: 100%;
+}
+
+.limitContainer {
+    margin: 0 auto;
+    width: 80%;
+}
+/* CABEÇALHO*/
+.header {
+    position: -webkit-sticky; /* Necessário para funcionar no Safari */
+    position: sticky;
+    background-color: white;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    top: 0;
+}
+
+.navBar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.navItem {
+    text-decoration: none;
+    color: #044BD9;
+    font-family: 'Archivo';
+    font-size: 30px;
+    display: inline;
+}
+
+.navBar button {
+    background-color: #044BD9;
+    color: White;
+    border: none;
+    font-family: 'Bebas Neue';
+    font-size: 30px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    width: 200px;
+    height: 60px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    transition: all 0.3s ease-out;
+    cursor: pointer;
+}
+
+.navBar button:hover {
+    background-color: #0597F2;
+    color: white;
+}
+
+.navBar h1{
+    font-family: 'Bebas Neue';
+    font-size: 50px;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    color: #044BD9;
+    margin-left: 10px;
+}
+
+.containerProperty {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 50px;
+}
+/*image*/
+.image {
+    width: 926px;
+}
+
+.cardInformation {
+    width: 496px;
+    height: 600px;
+    left: 1143px;
+    top: 0px;
+    border-color: #044BD9;
+    border-style: solid;
+    border-radius: 10px;
+    border-width: medium;
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.lineHorizontal {
+    display: flex;
+    justify-content: space-between;
+    border: 1px solid #808080;
+    margin-bottom: 36px;
+}
+
+.iconsInformations {
+    display: flex;
+    justify-content: space-between;
+}
+
+.iconsInformations li {
+    list-style: none;
+    text-align: center;
+    font-family: "Archivo";
+    font-weight: 400;
+    margin-bottom: 36px;
+    margin-top: 5px;
+}
+
+.description {
+    text-align: start;
+}
+
+.description h2 {
+    font-family: "Bebas Neue";
+    font-size: 30px;
+    color: #044BD9;
+    margin-bottom: 42px;
+}
+
+.description p {
+    font-family: "Archivo";
+    font-size: 30px;
+    font-weight: 400;
+    margin-bottom: 42px;
+}
