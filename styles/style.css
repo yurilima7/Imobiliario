@@ -152,6 +152,10 @@ body{
     list-style: none;
 }
 
+.main a {
+    text-decoration: none;
+}
+
 .address {
     text-align: left;
     font-family: 'Bebas Neue';

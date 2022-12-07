@@ -72,12 +72,6 @@ body{
     letter-spacing: 0em;
 }
 
-.lineHorizontal {
-    position: absolute;
-    width: 727px;
-    border: 1px solid #808080;
-}
-
 .formPopup h2 {
     margin: 100px 20px;
     font-family: 'Archivo';
@@ -88,7 +82,6 @@ body{
 }
 
 .form {
-    position: relative;
     margin-left: 20px;
     margin-right: 20px;
 }
