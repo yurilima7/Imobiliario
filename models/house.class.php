@@ -5,9 +5,9 @@
     public $desc;
     public $image;
     public $status;
-    public $fk_adress;
-    public $fk_locator;
-    public $fk_renter;
+    public $Adress;
+    public $Locator;
+    public $Renter;
 
     public function __construct(
         $id,
@@ -15,9 +15,9 @@
         $desc,
         $image,
         $status,
-        $fk_adress,
-        $fk_locator,
-        $fk_renter = 0
+        $Adress,
+        $Locator,
+        $Renter = null
        )
      {
        $this->id = $id;
@@ -25,23 +25,35 @@
        $this->desc = $desc;
        $this->image = $image;
        $this->status = $status;
-       $this->fk_adress = $fk_adress;
-       $this->fk_locator = $fk_locator;
-       $this->fk_renter = $fk_renter;
+       $this->Adress = $Adress;
+       $this->Locator = $Locator;
+       $this->Renter = $Renter;
      }
-    /// retorna todas as casas do banco de dados
+    /// retorna todas as casas do banco de dados onde não estão alugadas
     public function getAllHouses($house){
-     $sql = "SELECT * FROM tblHouse";
+     $sql = "SELECT * FROM tblHouse 
+            INNER JOIN tblAdress ON
+            tblAdress.id = tblHouse.fk_adress
+            INNER JOIN tblLocator ON
+            tblLocator.id = tblHouse.fk_locator
+            WHERE tblHouse.fk_renter IS NULL";
      $result = $house->query($sql);
      foreach ($result as $row) {
-        if ($row['fk_renter'] != 0) {
+        if ($row['fk_renter'] != null) {
             $houses[] = new House(
-                                $row['id'],
-                                $row['value'],
-                                $row['desc'],
-                                $row['image'],
-                                $row['status'],
-                                $row['fk_adress'],
+                                $row['tblHouse.id'],
+                                $row['tblHouse.value'],
+                                $row['tblHouse.desc'],
+                                $row['tblHouse.image'],
+                                $row['tblHouse.status'],
+                                new Adress(
+                                 $row['tblAdress.id'],
+                                 $row['tblAdress.state'],
+                                 $row['tblAdress.city'],
+                                 $row['tblAdress.district'],
+                                 $row['tblAdress.street'],
+                                 $row['tblAdress.number'],
+                                ),
                                 $row['fk_locator'],
                                 $row['fk_renter'],
                             );
