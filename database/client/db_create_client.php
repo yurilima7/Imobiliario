@@ -7,7 +7,6 @@
     );
     
     
-
    } catch(PDOException){
     print "Erro!: {$e->getMessage()} <br/>";
     die();
