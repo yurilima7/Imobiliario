@@ -112,6 +112,12 @@ body{
     margin-left: 10px;
 }
 
+.userIcon {
+    height: 65px;
+    width: 65px;
+    cursor: pointer;
+}
+
 /* MAIN GRID */
 .main {
     align-items: center;

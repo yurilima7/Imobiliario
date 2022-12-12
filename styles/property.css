@@ -77,12 +77,56 @@ body{
     margin-left: 10px;
 }
 
+.dropItem {
+    color: #044BD9;
+    font-family: 'Archivo';
+    font-size: 30px;
+    position: relative;
+    display: inline-block;
+    cursor: pointer;
+}
+
+.dropItemContent {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 200px;
+    min-height: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    padding: 12px 16px;
+    z-index: 1;
+}
+
+.dropItem:hover .dropItemContent {
+    display: block;
+}
+
+.opc {
+    text-decoration: none;
+    color: #044BD9;
+    font-size: 20px;
+}
+
+.dropItemContent a:hover {
+    background-color: #0597F2;
+    color: white;
+}
+
+.userIcon {    height: 65px;
+    width: 65px;
+    cursor: pointer;
+}
+
 .containerProperty {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
     margin-bottom: 50px;
+}
+
+.containerProperty li {
+    list-style: none;
 }
 /*image*/
 .image {
@@ -94,11 +138,30 @@ body{
     height: 600px;
     left: 1143px;
     top: 0px;
-    border-color: #044BD9;
-    border-style: solid;
-    border-radius: 10px;
-    border-width: medium;
-    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+}
+
+.data {  
+    padding-top: 20px;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 20px;
+    font-family: 'Bebas Neue';
+}
+
+.bottomCard {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 20px;
+    font-family: 'Bebas Neue';
+    color: #808080;
+}
+
+.address {
+    color: #808080;
 }
 
 .lineHorizontal {
@@ -138,4 +201,15 @@ body{
     font-size: 30px;
     font-weight: 400;
     margin-bottom: 42px;
+}
+
+.footer {
+    margin-top: 20px;
+    color: white;
+    background-color: #044BD9;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    text-align: center;
+    font-size: 16px;
+    font-family: 'Bebas Neue';
 }

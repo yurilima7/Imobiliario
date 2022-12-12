@@ -14,13 +14,17 @@
             <h1>E-RENT</h1>
 
             <a class="navItem" href="#about">Sobre</a>
-            <a class="navItem" href="#">Locador</a>
+
+            <a class="navItem" href="../locator/locator.html"  rel="next" target="_self">
+                Locador
+            </a>
             <a class="navItem" href="#">Ajuda</a>
 
-            <div>
-                <a href="../add_announcement/announcement.html"  rel="next" target="_self">
-                    <button>Anunciar</button>
-                </a>
+            <div class="dropItem">
+                <span><img class="userIcon" src="../../icon/user.png" alt="user"></span>
+                <div class="dropItemContent">
+                    <a class="opc" href="../home_rent/rent.html">Sair</a>
+                </div>
             </div>
             
         </nav>
@@ -41,6 +45,20 @@
                 <li class="price">R$ 250,00</li>
             </div>
         </div>
+
+        <a href="../property_description/property.html" rel="next" target="_self">
+            <div class="card">
+                <img class="image" src="../../images/image02.png" alt="house">
+                <div class="data">
+                    <li class="address">Rua dos Imigrantes</li>
+                    <li class="address">Centro</li>
+                </div>
+                <div class="bottomCard">
+                    <li class="information">Venda</li>
+                    <li class="price">R$ 250,00</li>
+                </div>
+            </div>
+        </a>
     
         <div class="card">
             <img class="image" src="../../images/image03.png" alt="house">
@@ -155,44 +173,6 @@
         </div>
            
     </main>
-
-    <div id="loginForm" class="overlay">
-        <div class="formPopup">
-            <div class="rowBar">
-                <a class="close" href="#">&times;</a>
-                <h1>LOGIN</h1>
-            </div>
-
-            <div class="lineHorizontal"></div>
-
-            <h2>Bem-Vindo ao E-RENT</h2>
-
-            <div class="form">
-                <input type="text" name="E-MAIL" id="" placeholder="E-MAIL" required>
-                <input type="password" name="PASSWORD" id="" placeholder="SENHA" required>
-                <button>ENTRAR</button>
-            </div>
-        </div>
-    </div>
-
-    <div id="registerForm" class="overlay">
-        <div class="formPopup">
-            <div class="rowBar">
-                <a class="close" href="#">&times;</a>
-                <h1>CADASTRAR</h1>
-            </div>
-
-            <div class="lineHorizontal"></div>
-
-            <h2>Bem-Vindo ao E-RENT</h2>
-
-            <div class="form">
-                <input type="text" name="E-MAIL" id="" placeholder="E-MAIL" required>
-                <input type="password" name="PASSWORD" id="" placeholder="SENHA" required>
-                <button>CONTINUAR</button>
-            </div>
-        </div>
-    </div>
 
     <footer class="footer" id="about">
         <p class="limitContainer">
