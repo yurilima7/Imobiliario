@@ -128,6 +128,23 @@ body{
 .containerProperty li {
     list-style: none;
 }
+
+.containerProperty button {
+    background-color: #044BD9;
+    color: White;
+    border: none;
+    font-family: 'Bebas Neue';
+    font-size: 30px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    width: 100%;
+    height: 60px;
+    margin-top: 57px;
+    margin-bottom: 10px;
+    transition: all 0.3s ease-out;
+    cursor: pointer;
+}
 /*image*/
 .image {
     width: 926px;
@@ -138,6 +155,9 @@ body{
     height: 600px;
     left: 1143px;
     top: 0px;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
 }
 
 .data {  
@@ -146,18 +166,25 @@ body{
     padding-right: 10px;
     font-size: 20px;
     font-family: 'Bebas Neue';
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
 .bottomCard {
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-bottom: 20px;
     display: flex;
+    flex-direction: row;
     justify-content: space-between;
-    align-items: center;
+    align-items: flex-start;
     font-size: 20px;
     font-family: 'Bebas Neue';
     color: #808080;
+}
+
+.price {
+    font-size: 25px;
+    font-weight: bold;
+    color: #044BD9;
 }
 
 .address {
@@ -212,4 +239,114 @@ body{
     text-align: center;
     font-size: 16px;
     font-family: 'Bebas Neue';
+}
+
+/* FORMULÁRIO DE LOGIN / CADASTRO */
+.formPopup {
+    margin: 5rem auto;
+    background-color: white;
+    height: 766px;
+    width: 727px;
+    border-radius: 10px;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0, 0, 0, 0.7);
+    transition: opacity 500ms;
+    visibility: hidden;
+    opacity: 0;
+}
+
+.overlay:target {
+    visibility: visible;
+    opacity: 1;
+}
+
+.rowBar {
+    display: flex;
+    align-items: center;
+    margin-left: 20px;
+}
+
+.rowBar h1 {
+    margin: 15px auto;
+    font-family: 'Bebas Neue';
+    font-size: 30px;
+    font-weight: 400;
+    line-height: 36px;
+    letter-spacing: 0em;
+}
+
+.close {
+    text-decoration: none;
+    transition: all 200ms;
+    font-family: 'Bebas Neue';
+    font-size: 45px;
+    font-weight: 400;
+}
+
+.close:hover {
+    color: #0597F2;
+}
+
+.formPopup .lineHorizontal {
+    position: absolute;
+    width: 727px;
+    border: 1px solid #808080;
+}
+
+.formPopup h2 {
+    margin: 100px 20px;
+    font-family: 'Archivo';
+    font-size: 30px;
+    font-weight: 400;
+    letter-spacing: 0em;
+    text-align: left;
+}
+
+.form {
+    position: relative;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.form input {
+    width: 97%;
+    height: 80px;
+    border-radius: 10px;
+    margin-top: 20px;
+    font-family: 'Archivo';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    padding-left: 10px;
+    padding-right: 10px;
+    color: #000;
+}
+
+.form button {
+    background-color: #044BD9;
+    color: White;
+    border: none;
+    font-family: 'Bebas Neue';
+    font-size: 30px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    width: 100%;
+    height: 60px;
+    margin-top: 57px;
+    margin-bottom: 10px;
+    transition: all 0.3s ease-out;
+    cursor: pointer;
+}
+
+.form button:hover {
+    background-color: #0597F2;
+    color: white;
 }
