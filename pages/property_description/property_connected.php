@@ -20,7 +20,7 @@
             <div class="dropItem">
                 <span><img class="userIcon" src="../../icon/user.png" alt="user"></span>
                 <div class="dropItemContent">
-                    <a class="opc" href="../property_description/property.html">Sair</a>
+                    <a class="opc" href="../property_description/property.php">Sair</a>
                 </div>
             </div>
             
@@ -28,23 +28,29 @@
     </header>
 
     <main class="limitContainer">
+        <?php
+            require_once '../../classes';
+
+            $dao = new HouseDAO();
+            $house = $dao->list($id);//alterar depois
+        ?>
         <div class="containerProperty">
             <img class="image" src="../../images/image_description.png" alt="house">
 
             <div class="cardInformation">
                 <div class="data">
-                    <li class="address">Fortaleza</li>
-                    <li class="address">Ceará</li>
-                    <li class="address">Rua dos Imigrantes</li>
-                    <li class="address">Centro</li>
+                    <li class="address"><?php echo $house['city'] ;?></li>
+                    <li class="address"><?php echo $house['state'] ;?></li>
+                    <li class="address"><?php echo $house['street'] ;?></li>
+                    <li class="address"><?php echo $house['district'] ;?></li>
 
                     <div class="bottomCard">
-                        <li class="price">R$ 250,00</li>
+                        <li class="price"><?php echo $house['price'] ;?></li>
                     </div>    
                 </div>
 
                 <div>
-                    <a href="#"><button>ALUGAR</button></a>
+                    <a href="../home_rent/rent_connected.php"><button>ALUGAR</button></a>
                 </div>
             </div>
         </div>
@@ -54,32 +60,32 @@
         <div class="iconsInformations">
             <div>
                 <img src="../../icon/bedroom.svg" alt="quartos">
-                <li>3 Quartos</li>
+                <li><?php echo $house['bedroom'] ;?></li>
             </div>
 
             <div>
                 <img src="../../icon/shower.svg" alt="banheiros">
-                <li>2 Banheiros</li>
+                <li><?php echo $house['bathroom'] ;?></li>
             </div>
 
             <div>
                 <img src="../../icon/garage.svg" alt="garagem">
-                <li>Garagem</li>
+                <li><?php echo $house['garage'] ;?></li>
             </div>
 
             <div>
                 <img src="../../icon/centimeter.svg" alt="tamanho">
-                <li>300m²</li>
+                <li><?php echo $house['size'] ;?></li>
             </div>
             
             <div>
-                <img src="../../icon/pets.svg" alt="animais">
-                <li>-</li>
+                <img src="../../icon/pets_true.svg" alt="animais">
+                <li><?php echo $house['pet'] ;?></li>
             </div>
 
             <div>
                 <img src="../../icon/subway.svg" alt="metrô">
-                <li>Metrô prox.</li>
+                <li><?php echo $house['subway'] ;?></li>
             </div>
         </div>
 
@@ -87,19 +93,8 @@
 
         <div class="description">
             <h2>Descrição</h2>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Quia sapiente modi quod, nobis ab consectetur voluptas odio quisquam!
-                Recusandae similique consequuntur non quam eaque quo!
-                Eius nam quaerat eos corporis?
-            </p>
-        </div>
-        
-        <div class="description">
-            <h2>Mobília</h2>
-            <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                Quia sapiente modi quod, nobis ab consectetur voluptas odio quisquam!
-                Recusandae similique consequuntur non quam eaque quo!
-                Eius nam quaerat eos corporis?
+            <p>
+                <?php echo $house['description'] ;?>
             </p>
         </div>
     </main>

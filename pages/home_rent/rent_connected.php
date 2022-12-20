@@ -15,7 +15,7 @@
 
             <a class="navItem" href="#about">Sobre</a>
 
-            <a class="navItem" href="../locator/locator.html"  rel="next" target="_self">
+            <a class="navItem" href="../locator/locator.php"  rel="next" target="_self">
                 Locador
             </a>
             <a class="navItem" href="#">Ajuda</a>
@@ -23,7 +23,7 @@
             <div class="dropItem">
                 <span><img class="userIcon" src="../../icon/user.png" alt="user"></span>
                 <div class="dropItemContent">
-                    <a class="opc" href="../home_rent/rent.html">Sair</a>
+                    <a class="opc" href="../home_rent/rent.php">Sair</a>
                 </div>
             </div>
             
@@ -31,8 +31,32 @@
     </header>
 
     <main class="main limitContainer">
+        <?php
+            require_once '../../classes';
+
+            $dao = new HouseDAO();
+            $announcement = $dao->listAll();
+
+            foreach ($announcement as $key => $value) {
+        ?>   
+            <a href="../property_description/property.php" rel="next" target="_self">
+                <div class="card">
+                    <img class="image" src="../../images/image01.png" alt="house">
+                    <div class="data">
+                        <li class="address"><?php echo $value['street'];?></li>
+                        <li class="address"><?php echo $value['district'];?></li>
+                    </div>
+                    <div class="bottomCard">
+                        <li class="information">Aluguel</li>
+                        <li class="price"><?php echo $value['price'];?></li>
+                    </div>
+                </div>
+            </a>
+        <?php
+            }
+        ?>
         
-        <div class="card">
+        <!-- <div class="card">
             <img class="image" src="../../images/image01.png" alt="house">
 
             <div class="data">
@@ -170,7 +194,7 @@
                 <li class="information">Aluguel</li>
                 <li class="price">R$ 450,00</li>
             </div>
-        </div>
+        </div> -->
            
     </main>
 

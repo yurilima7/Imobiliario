@@ -14,21 +14,48 @@
             <h1>E-RENT</h1>
 
             <a class="navItem" href="#about">Sobre</a>
-            <a class="navItem" href="#">Locador</a>
+
+            <a class="navItem" href="../locator/locator.php"  rel="next" target="_self">
+                Locador
+            </a>
             <a class="navItem" href="#">Ajuda</a>
 
             <div>
-                <a href="../add_announcement/announcement.html"  rel="next" target="_self">
-                    <button>Anunciar</button>
-                </a>
+                <a href="#registerForm"><button>Cadastrar</button></a>
+                <a href="#loginForm"><button>Entrar</button></a>
             </div>
             
         </nav>
     </header>
 
     <main class="main limitContainer">
+
+        <?php
+            require_once '../../classes';
+
+            $dao = new HouseDAO();
+            $announcement = $dao->listAll();
+
+            foreach ($announcement as $key => $value) {
+        ?>   
+            <a href="../property_description/property.php" rel="next" target="_self">
+                <div class="card">
+                    <img class="image" src="../../images/image01.png" alt="house">
+                    <div class="data">
+                        <li class="address"><?php echo $value['street'];?></li>
+                        <li class="address"><?php echo $value['district'];?></li>
+                    </div>
+                    <div class="bottomCard">
+                        <li class="information">Aluguel</li>
+                        <li class="price"><?php echo $value['price'];?></li>
+                    </div>
+                </div>
+            </a>
+        <?php
+            }
+        ?>
         
-        <div class="card">
+        <!-- <div class="card">
             <img class="image" src="../../images/image01.png" alt="house">
 
             <div class="data">
@@ -41,6 +68,20 @@
                 <li class="price">R$ 250,00</li>
             </div>
         </div>
+
+        <a href="../property_description/property.html" rel="next" target="_self">
+            <div class="card">
+                <img class="image" src="../../images/image02.png" alt="house">
+                <div class="data">
+                    <li class="address">Rua dos Imigrantes</li>
+                    <li class="address">Centro</li>
+                </div>
+                <div class="bottomCard">
+                    <li class="information">Venda</li>
+                    <li class="price">R$ 250,00</li>
+                </div>
+            </div>
+        </a>
     
         <div class="card">
             <img class="image" src="../../images/image03.png" alt="house">
@@ -152,7 +193,7 @@
                 <li class="information">Aluguel</li>
                 <li class="price">R$ 450,00</li>
             </div>
-        </div>
+        </div> -->
            
     </main>
 
@@ -167,11 +208,17 @@
 
             <h2>Bem-Vindo ao E-RENT</h2>
 
-            <div class="form">
-                <input type="text" name="E-MAIL" id="" placeholder="E-MAIL" required>
-                <input type="password" name="PASSWORD" id="" placeholder="SENHA" required>
-                <button>ENTRAR</button>
-            </div>
+            <form action="" method="">
+                <div class="form">
+                    <input type="text" name="E-MAIL" id="E-MAIL" placeholder="E-MAIL" required>
+                    <input type="password" name="PASSWORD" id="PASSWORD" placeholder="SENHA" required>
+                    <div>
+                        <a href="../home_rent/rent_connected.php" rel="next" target="_self">
+                            <button>ENTRAR</button>
+                        </a>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 
@@ -186,11 +233,17 @@
 
             <h2>Bem-Vindo ao E-RENT</h2>
 
-            <div class="form">
-                <input type="text" name="E-MAIL" id="" placeholder="E-MAIL" required>
-                <input type="password" name="PASSWORD" id="" placeholder="SENHA" required>
-                <button>CONTINUAR</button>
-            </div>
+            <form action="" method="post">
+                <div class="form">
+                    <input type="text" name="E-MAIL" id="E-MAIL" placeholder="E-MAIL" required>
+                    <input type="password" name="PASSWORD" id="PASSWORD" placeholder="SENHA" required>
+                    <div>
+                        <a href="../register/register.php" rel="next" target="_self">
+                            <button>CONTINUAR</button>
+                        </a>
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
 
