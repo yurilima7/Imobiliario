@@ -1,6 +1,6 @@
 <?php
 // try {
-//     $dbh = new PDO('mysql:host=localhost;dbname=patoservidor', 'root', '');
+//     $dbh = new PDO('mysql:host=localhost;dbname=rent', 'root', '');
 //     foreach($dbh->query('SELECT * from tblimovel') as $row) {
 //         print_r($row);
 //     }
@@ -9,7 +9,7 @@
 //     print "Error!: " . $e->getMessage() . "<br/>";
 //     die();
 // }    
-            require_once('../Imobiliario/classes/houseDAO.class.php');
+            require_once 'classes\houseDAO.class.php';
             $dao = new HouseDAO();
             $announcement = $dao->listAll();
 

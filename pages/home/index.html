@@ -13,11 +13,17 @@
         <nav class="navBar limitContainer">
             <h1>E-RENT</h1>
 
-            <a class="navItem" href="#about">Sobre</a>
+            <a class="navItem" href="#">Sobre</a>
 
-            <a class="navItem" href="../locator/locator.php"  rel="next" target="_self">
-                Locador
-            </a>
+            <div class="dropItem">
+                <span>Buscar</span>
+                <div class="dropItemContent">
+                    <a class="opc" href="#">Imóveis para comprar</a>
+                    <a class="opc" href="../home_rent/rent.html">Imóveis para alugar</a>
+                </div>
+            </div>
+
+            <a class="navItem" href="#">Locador</a>
             <a class="navItem" href="#">Ajuda</a>
 
             <div>
@@ -29,38 +35,8 @@
     </header>
 
     <main class="main limitContainer">
-
-    <tbody> 
-    <?php       
-        require_once '../../classes/houseDAO.class.php';
-        $dao = new HouseDAO();
-        $announcement = $dao->listAll();
         
-        foreach ($announcement as $key => $value) {
-        ?>   
-        
-        <a href="../property_description/property.php" rel="next" target="_self">
-            <div class="card">
-                <img class="image" src="../../images/image01.png" alt="house">
-                <div class="data">
-                    <li class="address"><?php echo $value['rua'];?></li>
-                    <li class="address"><?php echo $value['bairro'];?></li>
-                </div>
-                <div class="bottomCard">
-                    <li class="information">Aluguel</li>
-                    <li class="price">R$<?php echo $value['valor'];?></li>
-                </div>
-            </div>
-        </a>
-        <?php
-            }
-        ?>
-
-    </tbody>
-
-        
-        
-        <!-- <div class="card">
+        <div class="card">
             <img class="image" src="../../images/image01.png" alt="house">
 
             <div class="data">
@@ -69,36 +45,22 @@
             </div>
 
             <div class="bottomCard">
-                <li class="information">Aluguel</li>
-                <li class="price">R$ 250,00</li>
+                <li class="information">Venda</li>
+                <li class="price">R$ 25.500,00</li>
             </div>
         </div>
-
-        <a href="../property_description/property.html" rel="next" target="_self">
-            <div class="card">
-                <img class="image" src="../../images/image02.png" alt="house">
-                <div class="data">
-                    <li class="address">Rua dos Imigrantes</li>
-                    <li class="address">Centro</li>
-                </div>
-                <div class="bottomCard">
-                    <li class="information">Venda</li>
-                    <li class="price">R$ 250,00</li>
-                </div>
-            </div>
-        </a>
     
         <div class="card">
-            <img class="image" src="../../images/image03.png" alt="house">
+            <img class="image" src="../../images/image02.png" alt="house">
 
             <div class="data">
-                <li class="address">Residêncial Floresta</li>
+                <li class="address">Rua dos Imigrantes</li>
                 <li class="address">Centro</li>
             </div>
 
             <div class="bottomCard">
-                <li class="information">Aluguel</li>
-                <li class="price">R$ 355,00</li>
+                <li class="information">Venda</li>
+                <li class="price">R$ 25.000,00</li>
             </div>
         </div>
     
@@ -111,8 +73,8 @@
             </div>
 
             <div class="bottomCard">
-                <li class="information">Aluguel</li>
-                <li class="price">R$ 250,00</li>
+                <li class="information">Venda</li>
+                <li class="price">R$ 45.550,00</li>
             </div>
         </div>
       
@@ -125,22 +87,22 @@
             </div>
 
             <div class="bottomCard">
-                <li class="information">Aluguel</li>
-                <li class="price">R$ 450,00</li>
+                <li class="information">Venda</li>
+                <li class="price">R$ 14.550,00</li>
             </div>
         </div>
 
         <div class="card">
-            <img class="image" src="../../images/image07.png" alt="house">
+            <img class="image" src="../../images/image06.png" alt="house">
 
             <div class="data">
-                <li class="address">Residêncial Floresta</li>
+                <li class="address">Condomínio Boa Vista</li>
                 <li class="address">Centro</li>
             </div>
 
             <div class="bottomCard">
-                <li class="information">Aluguel</li>
-                <li class="price">R$ 250,00</li>
+                <li class="information">Venda</li>
+                <li class="price">R$ 32.250,00</li>
             </div>
         </div>
 
@@ -153,8 +115,8 @@
             </div>
 
             <div class="bottomCard">
-                <li class="information">Aluguel</li>
-                <li class="price">R$ 250,00</li>
+                <li class="information">Venda</li>
+                <li class="price">R$ 27.000,00</li>
             </div>
         </div>
 
@@ -167,22 +129,8 @@
             </div>
 
             <div class="bottomCard">
-                <li class="information">Aluguel</li>
-                <li class="price">R$ 250,00</li>
-            </div>
-        </div>
-
-        <div class="card">
-            <img class="image" src="../../images/image10.png" alt="house">
-
-            <div class="data">
-                <li class="address">Condomínio Flor de Jardim</li>
-                <li class="address">Centro</li>
-            </div>
-
-            <div class="bottomCard">
-                <li class="information">Aluguel</li>
-                <li class="price">R$ 350,00</li>
+                <li class="information">Venda</li>
+                <li class="price">R$ 34.450,00</li>
             </div>
         </div>
 
@@ -195,11 +143,25 @@
             </div>
 
             <div class="bottomCard">
-                <li class="information">Aluguel</li>
-                <li class="price">R$ 450,00</li>
+                <li class="information">Venda</li>
+                <li class="price">R$ 20.050,00</li>
             </div>
-        </div> -->
-           
+        </div>
+
+        <div class="card">
+            <img class="image" src="../../images/image12.png" alt="house">
+
+            <div class="data">
+                <li class="address">Condomínio Flor de Jardim</li>
+                <li class="address">Centro</li>
+            </div>
+
+            <div class="bottomCard">
+                <li class="information">Venda</li>
+                <li class="price">R$ 19.550,00</li>
+            </div>
+        </div>
+      
     </main>
 
     <div id="loginForm" class="overlay">
@@ -213,17 +175,11 @@
 
             <h2>Bem-Vindo ao E-RENT</h2>
 
-            <form action="" method="">
-                <div class="form">
-                    <input type="text" name="E-MAIL" id="E-MAIL" placeholder="E-MAIL" required>
-                    <input type="password" name="PASSWORD" id="PASSWORD" placeholder="SENHA" required>
-                    <div>
-                        <a href="../home_rent/rent_connected.php" rel="next" target="_self">
-                            <button>ENTRAR</button>
-                        </a>
-                    </div>
-                </div>
-            </form>
+            <div class="form">
+                <input type="text" name="E-MAIL" id="" placeholder="E-MAIL" required>
+                <input type="password" name="PASSWORD" id="" placeholder="SENHA" required>
+                <button>ENTRAR</button>
+            </div>
         </div>
     </div>
 
@@ -238,21 +194,15 @@
 
             <h2>Bem-Vindo ao E-RENT</h2>
 
-            <form action="" method="post">
-                <div class="form">
-                    <input type="text" name="E-MAIL" id="E-MAIL" placeholder="E-MAIL" required>
-                    <input type="password" name="PASSWORD" id="PASSWORD" placeholder="SENHA" required>
-                    <div>
-                        <a href="../register/register.php" rel="next" target="_self">
-                            <button>CONTINUAR</button>
-                        </a>
-                    </div>
-                </div>
-            </form>
+            <div class="form">
+                <input type="text" name="E-MAIL" id="" placeholder="E-MAIL" required>
+                <input type="password" name="PASSWORD" id="" placeholder="SENHA" required>
+                <button>CONTINUAR</button>
+            </div>
         </div>
     </div>
 
-    <footer class="footer" id="about">
+    <footer class="footer">
         <p class="limitContainer">
             E-RENT IMOBILIÁRIA, somos uma empresa focada na disponibilização das melhores 
             ofertas de imóveis para aluguel e/ou vendas para nossos locatários. <br>
