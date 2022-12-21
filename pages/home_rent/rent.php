@@ -30,8 +30,9 @@
 
     <main class="main limitContainer">
 
-        <?php
-            require_once '../../classes';
+    <tbody> 
+    <?php
+            
 
             $dao = new HouseDAO();
             $announcement = $dao->listAll();
@@ -54,6 +55,10 @@
         <?php
             }
         ?>
+
+    </tbody>
+
+        
         
         <!-- <div class="card">
             <img class="image" src="../../images/image01.png" alt="house">

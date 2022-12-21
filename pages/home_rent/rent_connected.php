@@ -32,8 +32,7 @@
 
     <main class="main limitContainer">
         <?php
-            require_once '../../classes';
-
+            require_once('../classes/house/houseDAO.class.php');
             $dao = new HouseDAO();
             $announcement = $dao->listAll();
 
@@ -43,19 +42,21 @@
                 <div class="card">
                     <img class="image" src="../../images/image01.png" alt="house">
                     <div class="data">
-                        <li class="address"><?php echo $value['street'];?></li>
-                        <li class="address"><?php echo $value['district'];?></li>
+                        <!-- <li class="address">></li>
+                        <li class="address"></li> -->
+                        <li class="address">street</li>
+                        <li class="address">district</li>
                     </div>
                     <div class="bottomCard">
                         <li class="information">Aluguel</li>
-                        <li class="price"><?php echo $value['price'];?></li>
+                        <li class="price"><?php echo $value['valor'];?></li>
                     </div>
                 </div>
             </a>
         <?php
             }
         ?>
-        
+       
         <!-- <div class="card">
             <img class="image" src="../../images/image01.png" alt="house">
 

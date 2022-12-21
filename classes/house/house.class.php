@@ -1,13 +1,13 @@
 <?php
   class House{
-    public $id;
-    public $value;
-    public $desc;
-    public $image;
-    public $status;
-    public $adress;
-    public $locator;
-    public $renter;
+    private $id;
+    private $value;
+    private $desc;
+    private $image;
+    private $status;
+    private $adress;
+    private $locator;
+    private $renter;
 
   // function get(){
   //   return $this->var;
