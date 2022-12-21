@@ -35,8 +35,8 @@
     </header>
 
     <main class="main limitContainer">
-    <?php
-            require_once(realpath(dirname(__FILE__) . '/../classes/house/houseDAO.class.php'));
+    <?php    
+            require_once('../../classes/house/houseDAO.class.php');
             $dao = new HouseDAO();
             $announcement = $dao->listAll();
 
