@@ -1,6 +1,8 @@
 <?php
+   require_once ('house.class.php'); 
+   require_once ('IDatabase.php');
+   require_once('connection.class.php');
   class HouseDAO extends House implements IDatabase{
-    
   	/**
 	 * @return mixed
 	 */
@@ -33,10 +35,9 @@
 	}
 
     public function listAll(){
-        $status = 'aberto';
-        $sql = "SELECT * FROM tblimovel where status = :status";
+        
+        $sql = 'SELECT * FROM tblimovel';
         $stmt = Connection::prepare($sql);
-        $stmt->bindParam(":status", $status);
         $stmt->execute();
         return $stmt->fetchAll();
     }
@@ -65,6 +66,10 @@
 	 * @return mixed
 	 */
 	public function remove($id) {
+        $sql = "DELETE FROM tblimovel WHERE id = :id";
+        $stmt = Connection::prepare($sql);
+        $stmt->bindParam(":id", $id);
+        $stmt->execute();
 	}
 }
 ?>

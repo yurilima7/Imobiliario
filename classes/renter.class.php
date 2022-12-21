@@ -1,5 +1,4 @@
 <?php
-  include_once '../models/user.class.php';
 
   class Renter extends User{
     var $id_renter;
