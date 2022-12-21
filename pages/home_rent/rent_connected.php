@@ -31,25 +31,24 @@
     </header>
 
     <main class="main limitContainer">
-        <?php
-            require_once('../classes/house/houseDAO.class.php');
+        <?php       
+            require_once '../../classes/houseDAO.class.php';
             $dao = new HouseDAO();
             $announcement = $dao->listAll();
-
+            
             foreach ($announcement as $key => $value) {
-        ?>   
+            ?>   
+            
             <a href="../property_description/property.php" rel="next" target="_self">
                 <div class="card">
                     <img class="image" src="../../images/image01.png" alt="house">
                     <div class="data">
-                        <!-- <li class="address">></li>
-                        <li class="address"></li> -->
-                        <li class="address">street</li>
-                        <li class="address">district</li>
+                        <li class="address"><?php echo $value['rua'];?></li>
+                        <li class="address"><?php echo $value['bairro'];?></li>
                     </div>
                     <div class="bottomCard">
                         <li class="information">Aluguel</li>
-                        <li class="price"><?php echo $value['valor'];?></li>
+                        <li class="price">R$<?php echo $value['valor'];?></li>
                     </div>
                 </div>
             </a>

@@ -29,26 +29,29 @@
     <main class="main limitContainer">
 
         <?php
-            require_once '../../classes';
+            require_once '../../classes/houseDAO.class.php';
+
+            // $idLocador = $_GET['id'];
+            $idLocador = 1;
 
             $dao = new HouseDAO();
-            $announcement = $dao->list('A');
+            $announcement = $dao->list($idLocador);
 
             foreach ($announcement as $key => $value) {
         ?>   
-            <div class="card">
-                <img class="image" src="../../images/image01.png" alt="house">
-
-                <div class="data">
-                    <li class="address"><?php echo $value['street'];?></li>
-                    <li class="address"><?php echo $value['district'];?></li>
+            <a href="edit_announcement.php?id=<?php echo $value['id'];?>" rel="next" target="_self">
+                <div class="card">
+                    <img class="image" src="../../images/image01.png" alt="house">
+                    <div class="data">
+                        <li class="address"><?php echo $value['rua'];?></li>
+                        <li class="address"><?php echo $value['bairro'];?></li>
+                    </div>
+                    <div class="bottomCard">
+                        <li class="information">Aluguel</li>
+                        <li class="price"><?php echo $value['valor'];?></li>
+                    </div>
                 </div>
-
-                <div class="bottomCard">
-                    <li class="information">Aluguel</li>
-                    <li class="price"><?php echo $value['price'];?></li>
-                </div>
-            </div>
+            </a>
         <?php
             }
         ?>

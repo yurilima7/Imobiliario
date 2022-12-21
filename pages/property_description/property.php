@@ -27,23 +27,27 @@
 
     <main class="limitContainer">
         <?php
-            require_once '../../classes';
-
+            require_once '../../classes/houseDAO.class.php';
+            $id = $_GET['id'];
+            
             $dao = new HouseDAO();
-            $house = $dao->list($id);//alterar depois
+            $house = $dao->search($id);//alterar depois
+
+            foreach ($house as $key => $value){
         ?>
+        
         <div class="containerProperty">
             <img class="image" src="../../images/image_description.png" alt="house">
 
             <div class="cardInformation">
                 <div class="data">
-                    <li class="address"><?php echo $house['city'] ;?></li>
-                    <li class="address"><?php echo $house['state'] ;?></li>
-                    <li class="address"><?php echo $house['street'] ;?></li>
-                    <li class="address"><?php echo $house['district'] ;?></li>
+                    <li class="address"><?php echo $value['cidade'] ;?></li>
+                    <li class="address"><?php echo $value['estado'] ;?></li>
+                    <li class="address"><?php echo $value['rua'] ;?></li>
+                    <li class="address"><?php echo $value['bairro'] ;?></li>
 
                     <div class="bottomCard">
-                        <li class="price"><?php echo $house['price'] ;?></li>
+                        <li class="price"><?php echo $value['valor'] ;?></li>
                     </div>    
                 </div>
 
@@ -55,46 +59,16 @@
 
         <div class="lineHorizontal"></div>
 
-        <div class="iconsInformations">
-            <div>
-                <img src="../../icon/bedroom.svg" alt="quartos">
-                <li><?php echo $house['bedroom'] ;?></li>
-            </div>
-
-            <div>
-                <img src="../../icon/shower.svg" alt="banheiros">
-                <li><?php echo $house['bathroom'] ;?></li>
-            </div>
-
-            <div>
-                <img src="../../icon/garage.svg" alt="garagem">
-                <li><?php echo $house['garage'] ;?></li>
-            </div>
-
-            <div>
-                <img src="../../icon/centimeter.svg" alt="tamanho">
-                <li><?php echo $house['size'] ;?></li>
-            </div>
-            
-            <div>
-                <img src="../../icon/pets_true.svg" alt="animais">
-                <li><?php echo $house['pet'] ;?></li>
-            </div>
-
-            <div>
-                <img src="../../icon/subway.svg" alt="metrô">
-                <li><?php echo $house['subway'] ;?></li>
-            </div>
-        </div>
-
-        <div class="lineHorizontal"></div>
-
         <div class="description">
             <h2>Descrição</h2>
             <p>
-                <?php echo $house['description'] ;?>
+                <?php echo $value['descricao'] ;?>
             </p>
         </div>
+
+        <?php 
+            }
+        ?>
     </main>
 
     <div id="loginForm" class="overlay">

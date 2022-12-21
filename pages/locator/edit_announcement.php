@@ -17,61 +17,39 @@
 
     <div class="formPopup">
         <div class="rowBar">
-            <h1>NOVO ANÚNCIO</h1>
+            <h1>EDITAR ANÚNCIO</h1>
         </div>
 
         <?php
-            require_once '../../classes';
+            require_once '../../classes/houseDAO.class.php';
 
             $id = $_GET['id'];
 
             $dao = new HouseDAO();
-            $house = $dao->list($id);//alterar depois
+            $house = $dao->search($id);//alterar depois
+
+            foreach ($house as $key => $value) {
         ?>        
         
-        <form action="../../database/houses/db_insert_house.php" method="post">
-            <div class="container">
-                <label for="">ACEITA PET?
-                    <input type="radio" NAME="resposta" VALUE="pet" required>
-                    <label for="yes">Sim</label>
-                    <input type="radio" NAME="resposta" VALUE="pet" required>
-                    <label for="not">Não</label>
-                </label>
-            </div>
-
-            <div class="container">
-                <label for="">METRÔ PRÓXIMO? 
-                    <input type="radio" NAME="resposta2" VALUE="subway" required>
-                    <label for="yes">Sim</label>
-                    <input type="radio" NAME="resposta" VALUE="subway" required>
-                    <label for="not">Não</label>
-                </label>
-            </div>
-
-            <div class="container">
-                <label for="">TEM GARAGEM? 
-                    <input type="radio" NAME="resposta" VALUE="garage" required>
-                    <label for="yes">Sim</label>
-                    <input type="radio" NAME="resposta" VALUE="garage" required>
-                    <label for="not">Não</label>
-                </label>
-            </div>
+        <form action="" method="post">
 
             <div class="form">
-                <input type="text" name="state" id="state" placeholder="ESTADO" value="<?php echo $house['state'];?>" required>
-                <input type="text" name="city" id="city" placeholder="CIDADE" value="<?php echo $house['city'];?>" required>
-                <input type="text" name="district" id="district" placeholder="BAIRRO" value="<?php echo $house['district'];?>" required>
-                <input type="text" name="street" id="street" placeholder="RUA" value="<?php echo $house['street'];?>" required>
-                <input type="text" name="bedroom" id="bedroom" placeholder="QUANTIDADE DE QUARTOS" value="<?php echo $house['bedroom'];?>" required>
-                <input type="text" name="bathroom" id="bathroom" placeholder="QUANTIDADE DE BANHEIROS" value="<?php echo $house['bathroom'];?>" required>
-                <input type="text" name="size" id="size" placeholder="TAMANHO EM M²" value="<?php echo $house['size'];?>" required>
-                <input type="text" name="price" id="price" placeholder="PREÇO DO ALUGUEL" value="<?php echo $house['price'];?>" required>
-                <textarea name="description" id="description" cols="30" rows="10" placeholder="DESCRIÇÃO" value="<?php echo $house['description'];?>"></textarea>
+                <input type="text" name="state" id="state" placeholder="ESTADO" value="<?php echo $value['estado'];?>" required>
+                <input type="text" name="city" id="city" placeholder="CIDADE" value="<?php echo $value['cidade'];?>" required>
+                <input type="text" name="district" id="district" placeholder="BAIRRO" value="<?php echo $value['bairro'];?>" required>
+                <input type="text" name="street" id="street" placeholder="RUA" value="<?php echo $value['rua'];?>" required>
+                <input type="text" name="numero" id="number" placeholder="NÚMERO" value="<?php echo $value['numero'];?>" required>
+                <input type="text" name="price" id="price" placeholder="PREÇO DO ALUGUEL" value="<?php echo $value['valor'];?>" required>
+                <textarea name="description" id="description" cols="30" rows="10" placeholder="DESCRIÇÃO"><?php echo $value['descricao'];?></textarea>
                 <input type="file" name="files" accept="image/png, image/jpeg"  multiple />
-                <a href="../locator/locator.php" rel="next" target="_self"><button>ANUNCIAR</button></a>
+                <a href="../locator/locator.php" rel="next" target="_self"><button>Salvar</button></a>
                 <a href="../locator/locator.php" rel="next" target="_self"><button class="delete">DELETAR IMÓVEL</button></a>
             </div>
         </form>
+
+        <?php 
+            }
+        ?>
     </div>
 </body>
 </html>

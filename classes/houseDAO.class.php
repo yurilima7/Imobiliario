@@ -27,38 +27,41 @@
 	 * @return mixed
 	 */
 	public function list($id) {
-        $sql = "SELECT * FROM tblimovel where fk_locador = :id";
-        $stmt = Connection::prepare($sql);
-        $stmt->bindParam(":id", $id);
-        $stmt->execute();
-        return $stmt->fetchAll();
+        try {
+            $dbh = new PDO('mysql:host=localhost;dbname=rent', 'root', '');
+
+            return $dbh->query("SELECT * from tblimovel
+                                join tblendereco on tblimovel.fk_endereco = tblendereco.id
+                                join tbllocador on tblimovel.fk_locador = tbllocador.id where tbllocador.id = $id");
+        } catch (PDOException $e) {
+            print "Error!: " . $e->getMessage() . "<br/>";
+            die();
+        }
 	}
 
     public function listAll(){
+        try {
+            $dbh = new PDO('mysql:host=localhost;dbname=rent', 'root', '');
 
-                    try {
-                $dbh = new PDO('mysql:host=localhost;dbname=rent', 'root', '');
-
-                return $dbh->query('SELECT * from tblimovel join tblendereco on tblimovel.fk_endereco = tblendereco.id');
-            } catch (PDOException $e) {
-                print "Error!: " . $e->getMessage() . "<br/>";
-                die();
-            } 
-        
-        // $sql = 'SELECT * FROM tblimovel';
-        // $stmt = Connection::prepare($sql);
-        // $stmt->execute();
-        // return $stmt->fetchAll();
+            return $dbh->query('SELECT * from tblimovel join tblendereco on tblimovel.fk_endereco = tblendereco.id');
+        } catch (PDOException $e) {
+            print "Error!: " . $e->getMessage() . "<br/>";
+            die();
+        } 
     }
 	
 	/**
 	 * @return mixed
 	 */
 	public function search($id) {
-        $sql = "SELECT * FROM tblimovel where id = $id";
-        $stmt = Connection::prepare($sql);
-        $stmt->execute();
-        return $stmt->fetchAll();
+        try {
+            $dbh = new PDO('mysql:host=localhost;dbname=rent', 'root', '');
+
+            return $dbh->query("SELECT * from tblimovel join tblendereco on tblimovel.fk_endereco = tblendereco.id where tblimovel.id = $id");
+        } catch (PDOException $e) {
+            print "Error!: " . $e->getMessage() . "<br/>";
+            die();
+        }
 	}
 	
 	/**
