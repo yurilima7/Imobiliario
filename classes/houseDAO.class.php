@@ -7,20 +7,30 @@
 	 * @return mixed
 	 */
 	public function insert() {
-        //SELECT `id`, `valor`, `descricao`, `status`, `fk_endereco`, `fk_locador` FROM `patoservidor`.`tblimovel`
-        $sql = "INSERT INTO tblimovel (id, valor, descricao, status, fk_endereco, fk_locador) 
-                               VALUES (:id, :valor, :descricao, :status, :fk_endereco, :fk_locador)";
-        $stmt = Connection::prepare($sql);
-        $stmt->execute(
-            array(
-                ":id" => $this->getId(), 
-                ":valor"=> $this->getValue(), 
-                ":descricao"=> $this->getDesc(), 
-                ":status"=> $this->getStatus(), 
-                ":fk_endereco"=> $this->getAdrees(), 
-                ":fk_locador"=> $this->getLocator()
-            )
-        );
+
+        try {
+            $dbh = new PDO('mysql:host=localhost;dbname=duckserver', 'root', '');
+            $valor = $this->getValue();
+            $desc = $this->getDesc();
+            $sql = "INSERT INTO tblimovel (valor, descricao, status, fk_endereco, fk_locador) 
+                               VALUES ('$valor', '$desc', 'aberto', 1, 1)";
+                               $dbh->query($sql);
+        } catch (PDOException $e) {
+            print "Error!: " . $e->getMessage() . "<br/>";
+            die();
+        }
+        //SELECT `id`, `valor`, `descricao`, `status`, `fk_endereco`, `fk_locador` FROM `duckserver`.`tblimovel`
+       
+        // $stmt = Connection::prepare($sql);
+        // $stmt->execute(
+        //     array(
+        //         ":id" => $this->getId(), 
+        //         ":valor"=> $this->getValue(), 
+        //         ":descricao"=> $this->getDesc(), 
+        //         ":status"=> $this->getStatus(), 
+        //         ":fk_endereco"=> $this->getAdrees(), 
+        //         ":fk_locador"=> $this->getLocator()
+        //    // );
 	}
 	
 	/**
@@ -28,7 +38,7 @@
 	 */
 	public function list($id) {
         try {
-            $dbh = new PDO('mysql:host=localhost;dbname=rent', 'root', '');
+            $dbh = new PDO('mysql:host=localhost;dbname=duckserver', 'root', '');
 
             return $dbh->query("SELECT * from tblimovel
                                 join tblendereco on tblimovel.fk_endereco = tblendereco.id
@@ -41,9 +51,9 @@
 
     public function listAll(){
         try {
-            $dbh = new PDO('mysql:host=localhost;dbname=rent', 'root', '');
+            $dbh = new PDO('mysql:host=localhost;dbname=duckserver', 'root', '');
 
-            return $dbh->query('SELECT * from tblimovel join tblendereco on tblimovel.fk_endereco = tblendereco.id');
+            return $dbh->query("SELECT * from tblimovel join tblendereco on tblimovel.fk_endereco = tblendereco.id");
         } catch (PDOException $e) {
             print "Error!: " . $e->getMessage() . "<br/>";
             die();
@@ -55,9 +65,9 @@
 	 */
 	public function search($id) {
         try {
-            $dbh = new PDO('mysql:host=localhost;dbname=rent', 'root', '');
+            $dbh = new PDO('mysql:host=localhost;dbname=duckserver', 'root', '');
 
-            return $dbh->query("SELECT * from tblimovel join tblendereco on tblimovel.fk_endereco = tblendereco.id where tblimovel.id = $id");
+            return $dbh->query("SELECT * from tblimovel join tblendereco on tblimovel.fk_endereco = tblendereco.id where tblimovel.id = $id")->fetch();
         } catch (PDOException $e) {
             print "Error!: " . $e->getMessage() . "<br/>";
             die();

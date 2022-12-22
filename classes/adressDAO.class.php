@@ -1,4 +1,7 @@
 <?php
+require_once ('adress.class.php'); 
+require_once ('IDatabase.php');
+require_once('connection.class.php');
 class AdressDAO extends Adress implements IDatabase{
     
 	/**

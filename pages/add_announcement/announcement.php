@@ -11,7 +11,7 @@
 <body>
     <header class="header">
         <nav class="navBar limitContainer">
-            <h1>E-RENT</h1>          
+        <a href="../home_rent/rent.php" rel="next" target="_self"><h1>E-RENT</h1> </a>        
         </nav>
     </header>
 
@@ -31,7 +31,7 @@
                 <input type="text" name="valor" id="price" placeholder="PREÇO DO ALUGUEL" required>
                 <textarea name="descricao" id="description" cols="30" rows="10" placeholder="DESCRIÇÃO"></textarea>
                 <input type="file" name="files" accept="image/png, image/jpeg"  multiple />
-                <a href="../home_rent/rent.php" rel="next" target="_self"><button>ANUNCIAR</button></a>
+                <a href="../home_rent/rent.php" rel="next" target="_self"><button type="submit">cadastrar</button></a>
             </div>
         </form>
     </div>
