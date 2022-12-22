@@ -69,8 +69,8 @@
 
             <form action="" method="">
                 <div class="form">
-                    <input type="text" name="E-MAIL" id="E-MAIL" placeholder="E-MAIL" required>
-                    <input type="password" name="PASSWORD" id="PASSWORD" placeholder="SENHA" required>
+                    <input type="text" name="E-MAIL" id="E-MAIL" placeholder="E-MAIL" >
+                    <input type="password" name="PASSWORD" id="PASSWORD" placeholder="SENHA" >
                     <div>
                         <a href="../home_rent/rent_connected.php" rel="next" target="_self">
                             <button>ENTRAR</button>

@@ -31,9 +31,8 @@
             $id = $_GET['id'];
             
             $dao = new HouseDAO();
-            $house = $dao->search($id);//alterar depois
+            $house = $dao->search($id)
 
-            foreach ($house as $key => $value){
         ?>
         
         <div class="containerProperty">
@@ -41,13 +40,13 @@
 
             <div class="cardInformation">
                 <div class="data">
-                    <li class="address"><?php echo $value['cidade'] ;?></li>
-                    <li class="address"><?php echo $value['estado'] ;?></li>
-                    <li class="address"><?php echo $value['rua'] ;?></li>
-                    <li class="address"><?php echo $value['bairro'] ;?></li>
+                    <li class="address"><?php echo $house['cidade'] ;?></li>
+                    <li class="address"><?php echo $house['estado'] ;?></li>
+                    <li class="address"><?php echo $house['rua'] ;?></li>
+                    <li class="address"><?php echo $house['bairro'] ;?></li>
 
                     <div class="bottomCard">
-                        <li class="price"><?php echo $value['valor'] ;?></li>
+                        <li class="price"><?php echo $house['valor'] ;?></li>
                     </div>    
                 </div>
 
@@ -65,10 +64,6 @@
                 <?php echo $value['descricao'] ;?>
             </p>
         </div>
-
-        <?php 
-            }
-        ?>
     </main>
 
     <div id="loginForm" class="overlay">
