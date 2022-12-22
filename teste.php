@@ -1,7 +1,7 @@
 <?php
 try {
     $v = 2;
-    $dbh = new PDO('mysql:host=localhost;dbname=rent', 'root', '');
+    $dbh = new PDO('mysql:host=localhost;dbname=patoservidor', 'root', '');
     foreach($dbh->query("SELECT * from tblimovel join tbllocador 
         on tblimovel.fk_locador = tbllocador.id join tblendereco on tblimovel.fk_endereco = tblendereco.id where tbllocador.id = $v") as $row) {
         print_r($row);

@@ -28,7 +28,7 @@
 	 */
 	public function list($id) {
         try {
-            $dbh = new PDO('mysql:host=localhost;dbname=rent', 'root', '');
+            $dbh = new PDO('mysql:host=localhost;dbname=patoservidor', 'root', '');
 
             return $dbh->query("SELECT * from tblimovel
                                 join tblendereco on tblimovel.fk_endereco = tblendereco.id
@@ -41,7 +41,7 @@
 
     public function listAll(){
         try {
-            $dbh = new PDO('mysql:host=localhost;dbname=rent', 'root', '');
+            $dbh = new PDO('mysql:host=localhost;dbname=patoservidor', 'root', '');
 
             return $dbh->query('SELECT * from tblimovel join tblendereco on tblimovel.fk_endereco = tblendereco.id');
         } catch (PDOException $e) {
@@ -55,7 +55,7 @@
 	 */
 	public function search($id) {
         try {
-            $dbh = new PDO('mysql:host=localhost;dbname=rent', 'root', '');
+            $dbh = new PDO('mysql:host=localhost;dbname=patoservidor', 'root', '');
 
             return $dbh->query("SELECT * from tblimovel join tblendereco on tblimovel.fk_endereco = tblendereco.id where tblimovel.id = $id");
         } catch (PDOException $e) {
