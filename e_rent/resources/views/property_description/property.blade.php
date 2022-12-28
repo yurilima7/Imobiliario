@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" type="text/css" href="../../styles/property.css">
+    <link rel="stylesheet" type="text/css" href="/css/property.css">
     <link rel="shortcut icon" href="/icon/logo.ico" type="image/x-icon">
     <title>E-RENT</title>
 </head>
@@ -26,27 +26,19 @@
     </header>
 
     <main class="limitContainer">
-        <?php
-            require_once '../../classes/houseDAO.class.php';
-            $id = $_GET['id'];
-            
-            $dao = new HouseDAO();
-            $house = $dao->search($id)
-
-        ?>
         
         <div class="containerProperty">
             <img class="image" src="../../images/image_description.png" alt="house">
 
             <div class="cardInformation">
                 <div class="data">
-                    <li class="address"><?php echo $house['cidade'] ;?></li>
-                    <li class="address"><?php echo $house['estado'] ;?></li>
-                    <li class="address"><?php echo $house['rua'] ;?></li>
-                    <li class="address"><?php echo $house['bairro'] ;?></li>
+                    <li class="address">{{$imovel[0]->cidade}}</li>
+                    <li class="address">{{$imovel[0]->estado}}</li>
+                    <li class="address">{{$imovel[0]->rua}}</li>
+                    <li class="address">{{$imovel[0]->bairro}}</li>
 
                     <div class="bottomCard">
-                        <li class="price"><?php echo $house['valor'] ;?></li>
+                        <li class="price">{{$imovel[0]->valor}}</li>
                     </div>    
                 </div>
 
@@ -61,7 +53,7 @@
         <div class="description">
             <h2>Descrição</h2>
             <p>
-                <?php echo $value['descricao'] ;?>
+                {{$imovel[0]->descricao}}
             </p>
         </div>
     </main>

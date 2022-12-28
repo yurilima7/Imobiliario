@@ -18,11 +18,15 @@ Route::get('/', function () {
 });
 
 // Home
-Route::get('/home', 'App\Http\Controllers\ImovelController@home');
-Route::get('/home/listagem', 'App\Http\Controllers\ImovelController@indexImoveis')->name('listagem');
+Route::get('/home', 'App\Http\Controllers\ImovelController@home')->name('listagem');
+Route::get('/home/teste', 'App\Http\Controllers\ImovelController@indexImoveis');
 Route::post('/home', 'App\Http\Controllers\UserController@insertUser')->name('inserir_usuario');
-Route::get('/home/connected/{idUsuario}', 'App\Http\Controllers\ImovelController@home_connected');
+Route::get('/home/conectado/{idUsuario}', 'App\Http\Controllers\ImovelController@homeConnected');
 
 // Registrar Usuário
 Route::get('/register/{idUsuario}', 'App\Http\Controllers\UserController@register')->name('inserir_demais_dados');
 Route::post('/register/{idUsuario}', 'App\Http\Controllers\UserController@insertData')->name('inserir_dados');
+
+// Descrição do Imóvel
+Route::get('/descricao/{idImovel}', 'App\Http\Controllers\ImovelController@showImovel')->name('descricao');
+Route::get('/descricao/conectado/{idImovel}', 'App\Http\Controllers\ImovelController@showImovelConnected')->name('descricao_conectado');

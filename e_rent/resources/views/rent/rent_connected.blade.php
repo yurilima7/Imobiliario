@@ -29,162 +29,27 @@
         </nav>
     </header>
 
-    <main class="main limitContainer">      
-            <a href="../property_description/property.php" rel="next" target="_self">
+    
+    <main class="main limitContainer">   
+        @forelse ($imoveis as $imovel)    
+            <a href="{{route('descricao_conectado', ['idImovel' => $imovel->idImovel])}}" rel="next" target="_self">
                 <div class="card">
                     <img class="image" src="/images/image01.png" alt="house">
                     <div class="data">
-                        <li class="address">rua</li>
-                        <li class="address">bairro</li>
+                        <li class="address">{{$imovel->rua}}</li>
+                        <li class="address">{{$imovel->bairro}}</li>
                     </div>
                     <div class="bottomCard">
                         <li class="information">Aluguel</li>
-                        <li class="price">R$ valor</li>
+                        <li class="price">R$ {{$imovel->valor}}</li>
                     </div>
                 </div>
             </a>
-       
-        <!-- <div class="card">
-            <img class="image" src="../../images/image01.png" alt="house">
-
-            <div class="data">
-                <li class="address">Rua 31 de Agosto</li>
-                <li class="address">Centro</li>
-            </div>
-
-            <div class="bottomCard">
-                <li class="information">Aluguel</li>
-                <li class="price">R$ 250,00</li>
-            </div>
-        </div>
-
-        <a href="../property_description/property.html" rel="next" target="_self">
-            <div class="card">
-                <img class="image" src="../../images/image02.png" alt="house">
-                <div class="data">
-                    <li class="address">Rua dos Imigrantes</li>
-                    <li class="address">Centro</li>
-                </div>
-                <div class="bottomCard">
-                    <li class="information">Venda</li>
-                    <li class="price">R$ 250,00</li>
-                </div>
-            </div>
-        </a>
-    
-        <div class="card">
-            <img class="image" src="../../images/image03.png" alt="house">
-
-            <div class="data">
-                <li class="address">Residêncial Floresta</li>
-                <li class="address">Centro</li>
-            </div>
-
-            <div class="bottomCard">
-                <li class="information">Aluguel</li>
-                <li class="price">R$ 355,00</li>
-            </div>
-        </div>
-    
-        <div class="card">
-            <img class="image" src="../../images/image04.png" alt="house">
-
-            <div class="data">
-                <li class="address">Rua dos Imigrantes</li>
-                <li class="address">Centro</li>
-            </div>
-
-            <div class="bottomCard">
-                <li class="information">Aluguel</li>
-                <li class="price">R$ 250,00</li>
-            </div>
-        </div>
-      
-        <div class="card">
-            <img class="image" src="../../images/image05.png" alt="house">
-
-            <div class="data">
-                <li class="address">Condomínio Boa Vista</li>
-                <li class="address">Centro</li>
-            </div>
-
-            <div class="bottomCard">
-                <li class="information">Aluguel</li>
-                <li class="price">R$ 450,00</li>
-            </div>
-        </div>
-
-        <div class="card">
-            <img class="image" src="../../images/image07.png" alt="house">
-
-            <div class="data">
-                <li class="address">Residêncial Floresta</li>
-                <li class="address">Centro</li>
-            </div>
-
-            <div class="bottomCard">
-                <li class="information">Aluguel</li>
-                <li class="price">R$ 250,00</li>
-            </div>
-        </div>
-
-        <div class="card">
-            <img class="image" src="../../images/image08.png" alt="house">
-
-            <div class="data">
-                <li class="address">Residêncial Floresta</li>
-                <li class="address">Centro</li>
-            </div>
-
-            <div class="bottomCard">
-                <li class="information">Aluguel</li>
-                <li class="price">R$ 250,00</li>
-            </div>
-        </div>
-
-        <div class="card">
-            <img class="image" src="../../images/image09.png" alt="house">
-
-            <div class="data">
-                <li class="address">Rua 31 de Agosto</li>
-                <li class="address">Centro</li>
-            </div>
-
-            <div class="bottomCard">
-                <li class="information">Aluguel</li>
-                <li class="price">R$ 250,00</li>
-            </div>
-        </div>
-
-        <div class="card">
-            <img class="image" src="../../images/image10.png" alt="house">
-
-            <div class="data">
-                <li class="address">Condomínio Flor de Jardim</li>
-                <li class="address">Centro</li>
-            </div>
-
-            <div class="bottomCard">
-                <li class="information">Aluguel</li>
-                <li class="price">R$ 350,00</li>
-            </div>
-        </div>
-
-        <div class="card">
-            <img class="image"src="../../images/image11.png" alt="house">
-
-            <div class="data">
-                <li class="address">Condomínio Flor de Jardim</li>
-                <li class="address">Centro</li>
-            </div>
-
-            <div class="bottomCard">
-                <li class="information">Aluguel</li>
-                <li class="price">R$ 450,00</li>
-            </div>
-        </div> -->
-           
+        @empty
+            <p>Sem imóveis</p>
+        @endforelse
     </main>
+    
 
     <footer class="footer" id="about">
         <p class="limitContainer">

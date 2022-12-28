@@ -28,22 +28,25 @@
         </nav>
     </header>
 
-  
-        <main class="main limitContainer">       
-            <a href="" rel="next" target="_self">
+    <main class="main limitContainer">   
+        @forelse ($imoveis as $imovel)    
+            <a href="{{route('descricao', ['idImovel' => $imovel->idImovel])}}" rel="next" target="_self">
                 <div class="card">
                     <img class="image" src="/images/image01.png" alt="house">
                     <div class="data">
-                        <li class="address">rua</li>
-                        <li class="address">bairro</li>
+                        <li class="address">{{$imovel->rua}}</li>
+                        <li class="address">{{$imovel->bairro}}</li>
                     </div>
                     <div class="bottomCard">
                         <li class="information">Aluguel</li>
-                        <li class="price">R$ valor</li>
+                        <li class="price">R$ {{$imovel->valor}}</li>
                     </div>
                 </div>
             </a>
-        </main>
+        @empty
+            <p>Sem imóveis</p>
+        @endforelse
+    </main>
 
     <div id="loginForm" class="overlay">
         <div class="formPopup">
