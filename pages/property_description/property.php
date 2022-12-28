@@ -40,13 +40,13 @@
 
             <div class="cardInformation">
                 <div class="data">
-                    <li class="address"><?php echo $house['cidade'] ;?></li>
-                    <li class="address"><?php echo $house['estado'] ;?></li>
-                    <li class="address"><?php echo $house['rua'] ;?></li>
+                    <li class="address"><?php echo $house['cidade'] ;?> - <?php echo $house['estado'] ;?></li>
                     <li class="address"><?php echo $house['bairro'] ;?></li>
+                    <li class="address"><?php echo $house['rua'] ;?></li>
+                    <li class="address">Número <?php echo $house['numero'] ;?></li>
 
                     <div class="bottomCard">
-                        <li class="price"><?php echo $house['valor'] ;?></li>
+                        <li class="price">R$ <?php echo $house['valor'] ;?></li>
                     </div>    
                 </div>
 
@@ -61,7 +61,7 @@
         <div class="description">
             <h2>Descrição</h2>
             <p>
-                <?php echo $value['descricao'] ;?>
+                <?php echo $house['descricao'] ;?>
             </p>
         </div>
     </main>

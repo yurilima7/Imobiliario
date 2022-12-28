@@ -21,7 +21,7 @@
         </div>
         
         <form action="../../database/houses/db_insert_house.php" method="post">
-
+            
             <div class="form">
                 <input type="text" name="estado" id="state" placeholder="ESTADO" required>
                 <input type="text" name="cidade" id="city" placeholder="CIDADE" required>

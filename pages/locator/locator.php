@@ -38,8 +38,9 @@
             $announcement = $dao->list($idLocador);
 
             foreach ($announcement as $key => $value) {
+                
         ?>   
-            <a href="edit_announcement.php?id=<?php echo $value['id'];?>" rel="next" target="_self">
+            <a href="edit_announcement.php?id=<?php echo $value['idImovel'];?>" rel="next" target="_self">
                 <div class="card">
                     <img class="image" src="../../images/image01.png" alt="house">
                     <div class="data">
@@ -55,119 +56,6 @@
         <?php
             }
         ?>
-    
-        <!-- <div class="card">
-            <img class="image" src="../../images/image03.png" alt="house">
-
-            <div class="data">
-                <li class="address">Residêncial Floresta</li>
-                <li class="address">Centro</li>
-            </div>
-
-            <div class="bottomCard">
-                <li class="information">Aluguel</li>
-                <li class="price">R$ 355,00</li>
-            </div>
-        </div>
-    
-        <div class="card">
-            <img class="image" src="../../images/image04.png" alt="house">
-
-            <div class="data">
-                <li class="address">Rua dos Imigrantes</li>
-                <li class="address">Centro</li>
-            </div>
-
-            <div class="bottomCard">
-                <li class="information">Aluguel</li>
-                <li class="price">R$ 250,00</li>
-            </div>
-        </div>
-      
-        <div class="card">
-            <img class="image" src="../../images/image05.png" alt="house">
-
-            <div class="data">
-                <li class="address">Condomínio Boa Vista</li>
-                <li class="address">Centro</li>
-            </div>
-
-            <div class="bottomCard">
-                <li class="information">Aluguel</li>
-                <li class="price">R$ 450,00</li>
-            </div>
-        </div>
-
-        <div class="card">
-            <img class="image" src="../../images/image07.png" alt="house">
-
-            <div class="data">
-                <li class="address">Residêncial Floresta</li>
-                <li class="address">Centro</li>
-            </div>
-
-            <div class="bottomCard">
-                <li class="information">Aluguel</li>
-                <li class="price">R$ 250,00</li>
-            </div>
-        </div>
-
-        <div class="card">
-            <img class="image" src="../../images/image08.png" alt="house">
-
-            <div class="data">
-                <li class="address">Residêncial Floresta</li>
-                <li class="address">Centro</li>
-            </div>
-
-            <div class="bottomCard">
-                <li class="information">Aluguel</li>
-                <li class="price">R$ 250,00</li>
-            </div>
-        </div>
-
-        <div class="card">
-            <img class="image" src="../../images/image09.png" alt="house">
-
-            <div class="data">
-                <li class="address">Rua 31 de Agosto</li>
-                <li class="address">Centro</li>
-            </div>
-
-            <div class="bottomCard">
-                <li class="information">Aluguel</li>
-                <li class="price">R$ 250,00</li>
-            </div>
-        </div>
-
-        <div class="card">
-            <img class="image" src="../../images/image10.png" alt="house">
-
-            <div class="data">
-                <li class="address">Condomínio Flor de Jardim</li>
-                <li class="address">Centro</li>
-            </div>
-
-            <div class="bottomCard">
-                <li class="information">Aluguel</li>
-                <li class="price">R$ 350,00</li>
-            </div>
-        </div>
-
-        <div class="card">
-            <img class="image"src="../../images/image11.png" alt="house">
-
-            <div class="data">
-                <li class="address">Condomínio Flor de Jardim</li>
-                <li class="address">Centro</li>
-            </div>
-
-            <div class="bottomCard">
-                <li class="information">Aluguel</li>
-                <li class="price">R$ 450,00</li>
-            </div>
-        </div> -->
-           
     </main>
 
     <div id="loginForm" class="overlay">

@@ -1,13 +1,13 @@
 <?php
   class House{
-    private $id;
-    private $value;
-    private $desc;
-    private $image;
-    private $status;
-    private $adress;
-    private $locator;
-    private $renter;
+    public $id;
+    public $value;
+    public $desc;
+    public $image;
+    public $status;
+    public $adress;
+    public $locator;
+    public $renter;
 
   // function get(){
   //   return $this->var;
@@ -45,42 +45,25 @@
   function setStatus($status)
   {return $this->status = $status;}
 
+  function getAdrees(){
+    return $this->adress;
+  }
+  function setAdress($adress)
+  {return $this->adress = $adress;}
+
   function getLocator(){
     return $this->locator;
   }
   function setLocator($locator)
   {return $this->locator = $locator;}
 
-  function getState(){
-    return $this->state;
+  function getRenter(){
+    return $this->renter;
   }
-  function setState($state)
-  {return $this->state = $state;}
-
-  function getCity(){
-    return $this->city;
-  }
-  function setCity($city)
-  {return $this->city = $city;}
-
-  function getDistrict(){
-    return $this->district;
-  }
-  function setDistrict($district)
-  {return $this->district = $district;}
-
-  function getStreet(){
-    return $this->street;
-  }
-  function setStreet($street)
-  {return $this->street = $street;}
+  function set($renter)
+  {return $this->renter = $renter;}
 
 
-  function getNumber(){
-    return $this->number;
-  }
-  function setNumber($number)
-  {return $this->number = $number;}
     
 
     // public function __construct(

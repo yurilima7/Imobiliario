@@ -26,7 +26,7 @@
             $id = $_GET['id'];
 
             $dao = new HouseDAO();
-            $house = $dao->search($id);//alterar depois
+            $house = $dao->searchImovel($id);//alterar depois
 
             foreach ($house as $key => $value) {
         ?>        

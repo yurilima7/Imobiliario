@@ -39,7 +39,7 @@
             foreach ($announcement as $key => $value) {
             ?>   
             
-            <a href="../property_description/property.php" rel="next" target="_self">
+            <a href="../property_description/property_connected.php?id=<?php echo $value['idImovel'];?>" rel="next" target="_self">
                 <div class="card">
                     <img class="image" src="../../images/image01.png" alt="house">
                     <div class="data">
@@ -48,7 +48,7 @@
                     </div>
                     <div class="bottomCard">
                         <li class="information">Aluguel</li>
-                        <li class="price">R$<?php echo $value['valor'];?></li>
+                        <li class="price">R$ <?php echo $value['valor'];?></li>
                     </div>
                 </div>
             </a>
