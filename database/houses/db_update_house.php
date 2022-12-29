@@ -9,6 +9,8 @@
         $price = $_POST['valor'];
         $desc = $_POST['descricao'];
         $idLocador = $_POST['idLocador'];
+        $idImovel = $_POST['idImovel'];
+        $idEndereco = $_POST['idEndereco'];
 
         $house = new HouseDAO();
 
@@ -20,8 +22,10 @@
         $house->setStreet($street);
         $house->setNumber($number);
         $house->setLocator($idLocador);
+        $house->setAdress($idEndereco);
+        $house->setId($idImovel);
 
-        $house->insert();
+        $house->update();
 
         header("Location: ../../pages/locator/locator.php?idLocador=$idLocador");
 ?>

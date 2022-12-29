@@ -18,7 +18,11 @@
             <a class="navItem" href="#">Ajuda</a>
 
             <div>
-                <a href="../add_announcement/announcement.php"  rel="next" target="_self">
+                <?php
+                    $idLocador = $_GET['idLocador'];   
+                ?>
+
+                <a href="../add_announcement/announcement.php?idLocador=<?=$idLocador?>"  rel="next" target="_self">
                     <button>Anunciar</button>
                 </a>
             </div>
@@ -31,16 +35,15 @@
         <?php
             require_once '../../classes/houseDAO.class.php';
 
-            // $idLocador = $_GET['id'];
-            $idLocador = 1;
-
+            $idLocador = $_GET['idLocador'];
+            
             $dao = new HouseDAO();
             $announcement = $dao->list($idLocador);
 
             foreach ($announcement as $key => $value) {
                 
         ?>   
-            <a href="edit_announcement.php?id=<?php echo $value['idImovel'];?>" rel="next" target="_self">
+            <a href="edit_announcement.php?id=<?php echo $value['idImovel'];?>&idLocador=<?=$idLocador?>" rel="next" target="_self">
                 <div class="card">
                     <img class="image" src="../../images/image01.png" alt="house">
                     <div class="data">
@@ -57,56 +60,6 @@
             }
         ?>
     </main>
-
-    <div id="loginForm" class="overlay">
-        <div class="formPopup">
-            <div class="rowBar">
-                <a class="close" href="#">&times;</a>
-                <h1>LOGIN</h1>
-            </div>
-
-            <div class="lineHorizontal"></div>
-
-            <h2>Bem-Vindo ao E-RENT</h2>
-
-            <form action="" method="post">
-                <div class="form">
-                    <input type="text" name="E-MAIL" id="E-MAIL" placeholder="E-MAIL" required>
-                    <input type="password" name="PASSWORD" id="PASSWORD" placeholder="SENHA" required>
-                    <div>
-                        <a href="../home_rent/rent_connected.php" rel="next" target="_self">
-                            <button>ENTRAR</button>
-                        </a>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <div id="registerForm" class="overlay">
-        <div class="formPopup">
-            <div class="rowBar">
-                <a class="close" href="#">&times;</a>
-                <h1>CADASTRAR</h1>
-            </div>
-
-            <div class="lineHorizontal"></div>
-
-            <h2>Bem-Vindo ao E-RENT</h2>
-
-            <form action="" method="post">
-                <div class="form">
-                    <input type="text" name="E-MAIL" id="E-MAIL" placeholder="E-MAIL" required>
-                    <input type="password" name="PASSWORD" id="PASSWORD" placeholder="SENHA" required>
-                    <div>
-                        <a href="../register/register.php" rel="next" target="_self">
-                            <button>CONTINUAR</button>
-                        </a>
-                    </div>
-                </div>
-            </form>
-        </div>
-    </div>
 
     <footer class="footer" id="about">
         <p class="limitContainer">

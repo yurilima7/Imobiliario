@@ -20,6 +20,10 @@
             <h1>NOVO ANÚNCIO</h1>
         </div>
         
+        <?php
+            $idLocador = $_GET['idLocador'];
+        ?> 
+        
         <form action="../../database/houses/db_insert_house.php" method="post">
             
             <div class="form">
@@ -31,7 +35,7 @@
                 <input type="text" name="valor" id="price" placeholder="PREÇO DO ALUGUEL" required>
                 <textarea name="descricao" id="description" cols="30" rows="10" placeholder="DESCRIÇÃO"></textarea>
                 <input type="file" name="files" accept="image/png, image/jpeg"  multiple />
-                <a href="../home_rent/rent.php" rel="next" target="_self"><button type="submit">cadastrar</button></a>
+                <button type="submit" name="idLocador" value="<?php echo $idLocador;?>">cadastrar</button>
             </div>
         </form>
     </div>

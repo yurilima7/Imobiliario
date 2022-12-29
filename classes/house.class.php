@@ -5,15 +5,13 @@
     private $desc;
     private $image;
     private $status;
-    private $adress;
     private $locator;
-    private $renter;
-
-  // function get(){
-  //   return $this->var;
-  // }
-  // function set($var)
-  // {return $this->var = $var;}
+    private $state;
+    private $city;
+    private $district;
+    private $street;
+    private $number;
+    private $adress;
 
   function getId(){
     return $this->id;
@@ -75,34 +73,17 @@
   function setStreet($street)
   {return $this->street = $street;}
 
-
   function getNumber(){
     return $this->number;
   }
   function setNumber($number)
   {return $this->number = $number;}
-    
 
-    // public function __construct(
-    //     $id,
-    //     $value,
-    //     $desc,
-    //     $image,
-    //     $status,
-    //     $adress,
-    //     $locator,
-    //     $renter
-    //    )
-    //  {
-    //    $this->id = $id;
-    //    $this->value = $value;
-    //    $this->desc = $desc;
-    //    $this->image = $image;
-    //    $this->status = $status;
-    //    $this->adress = $adress;
-    //    $this->locator = $locator;
-    //    $this->renter = $renter;
-    //  }
+  function getAdress(){
+    return $this->adress;
+  }
+  function setAdress($adress)
+  {return $this->adress = $adress;}
     
   }
   

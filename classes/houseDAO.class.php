@@ -1,5 +1,4 @@
 <?php
-   require_once ('adress.class.php');
    require_once ('house.class.php'); 
    require_once ('IDatabase.php');
    require_once('connection.class.php');
@@ -13,63 +12,25 @@
             $dbh = new PDO('mysql:host=localhost;dbname=e_rent', 'root', '');
             $valor = $this->getValue();
             $desc = $this->getDesc();
-
-            $sql = "INSERT INTO tblimovel (valor, descricao, status, fk_locador) 
-                               VALUES ('$valor', '$desc', 'aberto', 1)";
-
-            $dbh->query($sql);
-        } catch (PDOException $e) {
-            print "Error!: " . $e->getMessage() . "<br/>";
-            die();
-        }
-        //SELECT `id`, `valor`, `descricao`, `status`, `fk_endereco`, `fk_locador` FROM `e_rent`.`tblimovel`
-       
-        // $stmt = Connection::prepare($sql);
-        // $stmt->execute(
-        //     array(
-        //         ":id" => $this->getId(), 
-        //         ":valor"=> $this->getValue(), 
-        //         ":descricao"=> $this->getDesc(), 
-        //         ":status"=> $this->getStatus(), 
-        //         ":fk_endereco"=> $this->getAdrees(), 
-        //         ":fk_locador"=> $this->getLocator()
-        //    // );
-	}
-	
-    /**
-	 * @return mixed
-	 */
-    public function insertEnd() {
-
-        try {
-            $dbh = new PDO('mysql:host=localhost;dbname=e_rent', 'root', '');
+            $state = $this->getState();
             $city = $this->getCity();
             $district = $this->getDistrict();
-            $state = $this->getState();
             $street = $this->getStreet();
             $number = $this->getNumber();
+            $idLocador = $this->getLocator();
 
-            
-            $sql = "INSERT INTO tblendereco (fk_imovel, estado, cidade, bairro, rua, numero) 
-                                VALUES (104, $state, $city, $district, $street, $number)";
-
+            $sql = "INSERT INTO tblimovel (valor, descricao, status, fk_locador) 
+                               VALUES ('$valor', '$desc', 'aberto', '$idLocador')";
             $dbh->query($sql);
+            $idImovel = $dbh->lastInsertId();
+            
+            $sqlII = "INSERT INTO tblendereco (fk_imovel, estado, cidade, bairro, rua, numero) 
+                         VALUES ('$idImovel', '$state', '$city', '$district', '$street', '$number')";
+            $dbh->query($sqlII);
         } catch (PDOException $e) {
             print "Error!: " . $e->getMessage() . "<br/>";
             die();
         }
-        //SELECT `id`, `valor`, `descricao`, `status`, `fk_endereco`, `fk_locador` FROM `e_rent`.`tblimovel`
-       
-        // $stmt = Connection::prepare($sql);
-        // $stmt->execute(
-        //     array(
-        //         ":id" => $this->getId(), 
-        //         ":valor"=> $this->getValue(), 
-        //         ":descricao"=> $this->getDesc(), 
-        //         ":status"=> $this->getStatus(), 
-        //         ":fk_endereco"=> $this->getAdrees(), 
-        //         ":fk_locador"=> $this->getLocator()
-        //    // );
 	}
 
 	/**
@@ -128,18 +89,50 @@
 	 * @param mixed $id
 	 * @return mixed
 	 */
-	public function update($id) {
+	public function update() {
+        try {
+            $dbh = new PDO('mysql:host=localhost;dbname=e_rent', 'root', '');
+            $valor = $this->getValue();
+            $desc = $this->getDesc();
+            $state = $this->getState();
+            $city = $this->getCity();
+            $district = $this->getDistrict();
+            $street = $this->getStreet();
+            $number = $this->getNumber();
+            $idLocador = $this->getLocator();
+            $idImovel = $this->getId();
+            $idAdress = $this->getAdress();
+
+            $sql = "UPDATE tblimovel SET valor='$valor', descricao='$desc', status='aberto', fk_locador='$idLocador'
+                        WHERE idImovel = $idImovel";
+            $dbh->query($sql);
+            
+            $sqlII = "UPDATE tblendereco SET fk_imovel='$idImovel', estado='$state', cidade='$city', bairro='$district', rua='$street', numero='$number'
+                         WHERE idEndereco = $idAdress";
+            $dbh->query($sqlII);
+        } catch (PDOException $e) {
+            print "Error!: " . $e->getMessage() . "<br/>";
+            die();
+        }
 	}
 	
 	/**
 	 *
-	 * @param mixed $id
+	 * @param mixed $idImovel $idEndereco
 	 * @return mixed
 	 */
-	public function remove($id) {
-        $sql = "DELETE FROM tblimovel WHERE id = :id";
-        $stmt = Connection::prepare($sql);
-        $stmt->bindParam(":id", $id);
-        $stmt->execute();
+	public function remove($idImovel, $idEndereco) {
+        try {
+            $dbh = new PDO('mysql:host=localhost;dbname=e_rent', 'root', '');
+
+            $sql = "DELETE FROM tblimovel WHERE idImovel = $idImovel";
+            $dbh->query($sql);
+
+            $sqlII = "DELETE FROM tblendereco WHERE idEndereco = $idEndereco";
+            $dbh->query($sqlII);
+        } catch (PDOException $e) {
+            print "Error!: " . $e->getMessage() . "<br/>";
+            die();
+        }
 	}
 }

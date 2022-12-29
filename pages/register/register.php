@@ -22,21 +22,31 @@
 
         <div class="lineHorizontal"></div>
 
-        <form action="" method="post">
+        <?php
+            $email = $_POST['email'];
+            $senha = $_POST['senha'];   
+            print($email);
+            print($senha);
+        ?>
+
+        <form action="../../database/houses/db_insert_user.php" method="post">
             <div class="container">
+                
                 <label for="">É LOCADOR?
-                    <input type="radio" NAME="resposta" VALUE="isLocator" required>
+                    <input type="radio" name="locador" VALUE="1" required>
                     <label for="yes">Sim</label>
-                    <input type="radio" NAME="resposta" VALUE="isLocator" required>
+                    <input type="radio" name="locador" VALUE="0" required>
                     <label for="not">Não</label>
                 </label>
             </div>
+
             <div class="form">
-                <input type="text" name="fullName" id="fullName" placeholder="NOME COMPLETO" required>
-                <input type="text" name="CPF" id="CPF" placeholder="CPF" required>
-                <a href="../home_rent/rent_connected.php" rel="next" target="_self">
-                    <button>ENTRAR</button>
-                </a>
+                <input type="hidden" name="email" value="<?php echo $email; ?>">
+                <input type="hidden" name="senha" value="<?php echo $senha; ?>">
+                <input type="text" name="nome" id="fullName" placeholder="NOME COMPLETO" required>
+                <input type="text" name="cpf" id="CPF" placeholder="CPF" required>
+                <input type="text" name="telefone" id="telefone" placeholder="TELEFONE" required>
+                <button type="submit">ENTRAR</button>
             </div>
         </form>
     </div>
