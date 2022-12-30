@@ -24,7 +24,7 @@
             $idLocador = $_GET['idLocador'];
         ?> 
         
-        <form action="../../database/houses/db_insert_house.php" method="post">
+        <form action="../../database/houses/db_insert_house.php" method="post" enctype="multipart/form-data">
             
             <div class="form">
                 <input type="text" name="estado" id="state" placeholder="ESTADO" required>
@@ -34,7 +34,7 @@
                 <input type="text" name="numero" id="number" placeholder="NÚMERO" required>
                 <input type="text" name="valor" id="price" placeholder="PREÇO DO ALUGUEL" required>
                 <textarea name="descricao" id="description" cols="30" rows="10" placeholder="DESCRIÇÃO"></textarea>
-                <input type="file" name="files" accept="image/png, image/jpeg"  multiple />
+                <input type="file" name="files" accept="image/png, image/jpeg"/>
                 <button type="submit" name="idLocador" value="<?php echo $idLocador;?>">cadastrar</button>
             </div>
         </form>

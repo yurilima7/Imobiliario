@@ -10,6 +10,14 @@
         $desc = $_POST['descricao'];
         $idLocador = $_POST['idLocador'];
 
+        $image = $_FILES['imagem']['tmp_name'];
+        $lengthImage = $_FILES['imagem']['size'];
+
+        $temp = fopen($image, "rb");
+        $content = fread($temp, $lengthImage);
+        $content = addslashes($content);
+        fclose($temp);
+
         $house = new HouseDAO();
 
         $house->setValue($price);
@@ -20,6 +28,7 @@
         $house->setStreet($street);
         $house->setNumber($number);
         $house->setLocator($idLocador);
+        $house->setImage($content);
 
         $house->insert();
 
