@@ -20,12 +20,15 @@ Route::get('/', function () {
 // Home
 Route::get('/home', 'App\Http\Controllers\ImovelController@home')->name('listagem');
 Route::get('/home/teste', 'App\Http\Controllers\ImovelController@indexImoveis');
-Route::post('/home', 'App\Http\Controllers\UserController@insertUser')->name('inserir_usuario');
 Route::get('/home/conectado/{idUsuario}', 'App\Http\Controllers\ImovelController@homeConnected');
 
 // Registrar Usuário
+Route::post('/home/inserir', 'App\Http\Controllers\UserController@insertUser')->name('inserir_usuario');
 Route::get('/register/{idUsuario}', 'App\Http\Controllers\UserController@register')->name('inserir_demais_dados');
 Route::post('/register/{idUsuario}', 'App\Http\Controllers\UserController@insertData')->name('inserir_dados');
+Route::post('/home/login', 'App\Http\Controllers\UserController@login')->name('login');
+
+//LOGIN
 
 // Descrição do Imóvel
 Route::get('/descricao/{idImovel}', 'App\Http\Controllers\ImovelController@showImovel')->name('descricao');

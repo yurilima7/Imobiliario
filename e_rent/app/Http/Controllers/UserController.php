@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use Illuminate\Http\Request;
 
@@ -39,5 +40,25 @@ class UserController extends Controller
         ]);
 
         return view('rent.rent_connected', ['user' => $user]);
+    }
+
+    // LOGIN
+    public function login(Request $request) {
+        $user = DB::table('tblusuario')
+        ->where('tblusuario.email', '=', $request->email)->get();
+
+        if ($user[0]->senha == $request->senha) {
+            if ($user[0]->isLocator == 1) {
+                $locador = DB::table('tbllocador')
+                ->where('tbllocador.fk_usuario', '=', $user[0]->idUsuario)->get();
+
+                return $locador[0]->idLocador;
+            } else {
+                $locatario = DB::table('tbllocatario')
+                ->where('tbllocatario.fk_usuario', '=', $user[0]->idUsuario)->get();
+
+                return $locatario[0]->idLocatario;
+            }
+        }
     }
 }

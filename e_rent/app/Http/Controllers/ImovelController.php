@@ -28,6 +28,7 @@ class ImovelController extends Controller
         return view('rent.rent', compact('imoveis'));
     }
 
+    // DESCRIÇÃO DO IMÓVEL
     public function showImovel($idImovel) {
         $imovel = DB::table('tblendereco')
             ->join('tblimovel', 'tblendereco.fk_imovel', '=', 'tblimovel.idImovel')

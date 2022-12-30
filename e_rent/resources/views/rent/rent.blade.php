@@ -5,7 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="/css/style.css">
-    <!-- <link rel="shortcut icon" href="/icon/logo.ico" type="image/x-icon"> -->
+    <link rel="shortcut icon" href="/icon/logo.ico" type="image/x-icon">
     <title>E-RENT</title>
 </head>
 <body>
@@ -59,15 +59,12 @@
 
             <h2>Bem-Vindo ao E-RENT</h2>
 
-            <form action="" method="">
+            <form action="{{route('login')}}" method="post">
+                @csrf
                 <div class="form">
-                    <input type="text" name="E-MAIL" id="E-MAIL" placeholder="E-MAIL" >
-                    <input type="password" name="PASSWORD" id="PASSWORD" placeholder="SENHA" >
-                    <div>
-                        <a href="../home_rent/rent_connected.php" rel="next" target="_self">
-                            <button>ENTRAR</button>
-                        </a>
-                    </div>
+                    <input type="text" name="email" id="E-MAIL" placeholder="E-MAIL" >
+                    <input type="password" name="senha" id="PASSWORD" placeholder="SENHA" >
+                    <div><button>ENTRAR</button></div>
                 </div>
             </form>
         </div>
