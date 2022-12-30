@@ -16,11 +16,11 @@
             <a class="navItem" href="#about">Sobre</a>
 
             <?php
-                //$idLocador = $_GET['idLocador'];
-                $idLocador = 1;         
+                $idUsuario = $_GET['idUsuario'];
+                $idLocador = $_GET['idLocador'];       
             ?>
 
-            <a class="navItem" href="../locator/locator.php?idLocador=<?=$idLocador?>"  rel="next" target="_self">
+            <a class="navItem" href="../locator/locator.php?idLocador=<?=$idLocador?>&idUsuario=<?=$idUsuario?>"  rel="next" target="_self">
                 Locador
             </a>
             <a class="navItem" href="#">Ajuda</a>
@@ -42,21 +42,20 @@
             $announcement = $dao->listAll();
             
             foreach ($announcement as $key => $value) {
-            ?>   
+            ?>        
             
-            <a href="../property_description/property_connected.php?id=<?php echo $value['idImovel'];?>" rel="next" target="_self">
-                <div class="card">
-                    <img class="image" src="../../images/image01.png" alt="house">
-                    <div class="data">
-                        <li class="address"><?php echo $value['rua'];?></li>
-                        <li class="address"><?php echo $value['bairro'];?></li>
-                    </div>
-                    <div class="bottomCard">
-                        <li class="information">Aluguel</li>
-                        <li class="price">R$ <?php echo $value['valor'];?></li>
-                    </div>
+            <div class="card">
+                <img class="image" src="../../images/image01.png" alt="house">
+                <div class="data">
+                    <li class="address"><?php echo $value['rua'];?></li>
+                    <li class="address"><?php echo $value['bairro'];?></li>
                 </div>
-            </a>
+                <div class="bottomCard">
+                    <li class="information">Aluguel</li>
+                    <li class="price">R$ <?php echo $value['valor'];?></li>
+                </div>
+            </div>
+      
         <?php
             }
         ?>

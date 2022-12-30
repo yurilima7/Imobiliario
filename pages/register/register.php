@@ -25,8 +25,6 @@
         <?php
             $email = $_POST['email'];
             $senha = $_POST['senha'];   
-            print($email);
-            print($senha);
         ?>
 
         <form action="../../database/houses/db_insert_user.php" method="post">

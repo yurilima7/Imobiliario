@@ -66,14 +66,12 @@
 
             <h2>Bem-Vindo ao E-RENT</h2>
 
-            <form action="" method="">
+            <form action="../../database/houses/db_login_user.php" method="POST">
                 <div class="form">
-                    <input type="text" name="E-MAIL" id="E-MAIL" placeholder="E-MAIL" >
-                    <input type="password" name="PASSWORD" id="PASSWORD" placeholder="SENHA" >
+                    <input type="text" name="email" id="E-MAIL" placeholder="E-MAIL" >
+                    <input type="password" name="senha" id="PASSWORD" placeholder="SENHA" >
                     <div>
-                        <a href="../home_rent/rent_connected.php" rel="next" target="_self">
-                            <button>ENTRAR</button>
-                        </a>
+                        <button type="submit">ENTRAR</button>
                     </div>
                 </div>
             </form>
@@ -96,9 +94,7 @@
                     <input type="text" name="email" id="E-MAIL" placeholder="E-MAIL" required>
                     <input type="password" name="senha" id="PASSWORD" placeholder="SENHA" required>
                     <div>
-                        
-                            <button type="submit">CONTINUAR</button>
-                        
+                        <button type="submit">CONTINUAR</button>      
                     </div>
                 </div>
             </form>

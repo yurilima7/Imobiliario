@@ -12,26 +12,17 @@
     <header class="header">
         <nav class="navBar limitContainer">
             <?php
-                $idLocador = $_GET['idLocador']; 
-                $idUsuario = $_GET['idUsuario'];       
-            ?> 
-            <a href="../home_rent/rent_connected.php?idLocador=<?=$idLocador?>&idUsuario=<?=$idUsuario?>">
+                $idUsuario = $_GET['idUsuario'];
+                $idLocatario = $_GET['idLocatario'];
+            ?>
+            
+            <a href="../home_rent/rent_loc.php?idUsuario=<?=$idUsuario?>&idLocatario=<?=$idLocatario?>">
                 <h1>E-RENT</h1>
             </a>
 
             <a class="navItem" href="#about">Sobre</a>
-            <a class="navItem" href="#">Locador</a>
+            <a class="navItem" href="#">Locatário</a>
             <a class="navItem" href="#">Ajuda</a>
-
-            <div>
-                <?php
-                    $idLocador = $_GET['idLocador'];   
-                ?>
-
-                <a href="../add_announcement/announcement.php?idLocador=<?=$idLocador?>&idUsuario=<?=$idUsuario?>"  rel="next" target="_self">
-                    <button>Anunciar</button>
-                </a>
-            </div>
             
         </nav>
     </header>
@@ -41,15 +32,16 @@
         <?php
             require_once '../../classes/houseDAO.class.php';
 
-            $idLocador = $_GET['idLocador'];
+            $idUsuario = $_GET['idUsuario'];
+            $idLocatario = $_GET['idLocatario'];
             
             $dao = new HouseDAO();
-            $announcement = $dao->list($idLocador);
+            $rent = $dao->listLoc($idUsuario);
 
-            foreach ($announcement as $key => $value) {
+            foreach ($rent as $key => $value) {
                 
         ?>   
-            <a href="edit_announcement.php?id=<?php echo $value['idImovel'];?>&idLocador=<?=$idLocador?>&idUsuario=<?=$idUsuario?>" rel="next" target="_self">
+            <a href="edit_rent.php?idUsuario=<?=$idUsuario?>" rel="next" target="_self">
                 <div class="card">
                     <img class="image" src="../../images/image01.png" alt="house">
                     <div class="data">

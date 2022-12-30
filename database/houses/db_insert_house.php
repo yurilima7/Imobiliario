@@ -9,6 +9,7 @@
         $price = $_POST['valor'];
         $desc = $_POST['descricao'];
         $idLocador = $_POST['idLocador'];
+        $idUsuario = $_POST['idUsuario'];
 
         $image = $_FILES['imagem']['tmp_name'];
         $lengthImage = $_FILES['imagem']['size'];
@@ -32,5 +33,5 @@
 
         $house->insert();
 
-        header("Location: ../../pages/locator/locator.php?idLocador=$idLocador");
+        header("Location: ../../pages/locator/locator.php?idLocador=$idLocador&idUsuario=$idUsuario");
 ?>

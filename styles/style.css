@@ -31,6 +31,10 @@ body{
     top: 0;
 }
 
+.limitContainer a {
+    text-decoration: none;
+}
+
 .navBar {
     display: flex;
     flex-wrap: wrap;

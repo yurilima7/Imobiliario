@@ -25,6 +25,7 @@
 
             $id = $_GET['id'];
             $idLocador = $_GET['idLocador'];
+            $idUsuario = $_GET['idUsuario'];
 
             $dao = new HouseDAO();
             $house = $dao->searchImovel($id);
@@ -45,6 +46,7 @@
                 <input type="text" name="valor" id="price" placeholder="PREÇO DO ALUGUEL" value="<?php echo $value['valor'];?>" required>
                 <textarea name="descricao" id="description" cols="30" rows="10" placeholder="DESCRIÇÃO"><?php echo $value['descricao'];?></textarea>
                 <input type="file" name="files" accept="image/png, image/jpeg"  multiple />
+                <input type="hidden" name="idUsuario" value="<?php echo $idUsuario; ?>">
  
                 <button type="submit" name="idLocador" value="<?php echo $idLocador;?>">Salvar</button>
             </div>
@@ -54,6 +56,7 @@
             <div class="form">
                 <input type="hidden" name="idImovel" value="<?php echo $id; ?>">
                 <input type="hidden" name="idEndereco" value="<?php echo $value['idEndereco']; ?>">
+                <input type="hidden" name="idUsuario" value="<?php echo $idUsuario; ?>">
                 <button type="submit" name="idLocador" value="<?php echo $idLocador;?>" class="delete">DELETAR IMÓVEL</button>
             </div>
         </form>

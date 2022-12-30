@@ -46,5 +46,45 @@
 	 * @return mixed
 	 */
 	public function login() {
+        try {
+            $dbh = new PDO('mysql:host=localhost;dbname=e_rent', 'root', ''); 
+            $email = $this->getEmail();
+            $senha = $this->getPassword();
+
+            $sql = $dbh->query("SELECT * from tblusuario WHERE tblusuario.email = '$email'");
+
+            foreach ($sql as $key => $value) {
+                $idUsuario = $value['idUsuario'];
+                $senhaCadastrada = $value['senha'];
+                $isLocador = $value['isLocator'];
+            }
+
+            if ($senhaCadastrada == $senha) {
+                if($isLocador == 1){
+                    $sqlLocador = $dbh->query("SELECT * from tbllocador WHERE tbllocador.fk_usuario = '$idUsuario'");
+
+                    foreach ($sqlLocador as $key => $value) {
+                        $idLocador = $value['idLocador'];
+                    }
+
+                    header("Location: ../../pages/home_rent/rent_connected.php?idUsuario=$idUsuario&idLocador=$idLocador");  
+                }
+                else {
+                    $sqlLocatario = $dbh->query("SELECT * from tbllocatario WHERE tbllocatario.fk_usuario = '$idUsuario'");
+
+                    foreach ($sqlLocatario as $key => $value) {
+                        $idLocatario = $value['idLocatario'];
+                    }
+
+                    header("Location: ../../pages/home_rent/rent_loc.php?idUsuario=$idUsuario&idLocatario=$idLocatario");  
+                }
+            }
+            else {
+                header("Location: ../../pages/home_rent/rent.php#loginForm");
+            }
+        } catch (PDOException $e) {
+            print "Error!: " . $e->getMessage() . "<br/>";
+            die();
+        }
 	}
 }

@@ -10,7 +10,15 @@
 </head>
 <body>
     <?php
+        require_once '../../classes/sysDAO.class.php';
         
+        $dao = new SysDAO();
+        $usuarios = $dao->countUsuarios();
+        $locadores = $dao->countLocadores();
+        $locatarios = $dao->countLocatarios();
+        $imoveis = $dao->countImoveis();
+        $imoveisAlugados = $dao->countImoveisAlugados();
+        $imoveisDisponiveis = $dao->countImoveisDisponiveis();
     ?>
 
     <header class="header">
@@ -23,12 +31,13 @@
         <h1>Relatório</h1>
     </div>
 
-    <ul>
-        <li>Total de usuários: <?php echo $report[''] ;?></li>
-        <li>Total de locadores: <?php echo $report[''] ;?></li>
-        <li>Total de não locadores: <?php echo $report[''] ;?></li>
-        <li>Total de imóveis: <?php echo $report[''] ;?></li>
-        <li>Total de imóveis alugados: <?php echo $report[''] ;?></li>
+    <ul class="limitContainer">
+        <li>Total de usuários: <?php echo $usuarios ;?></li>
+        <li>Total de locadores: <?php echo $locadores ;?></li>
+        <li>Total de locatários: <?php echo $locatarios ;?></li>
+        <li>Total de imóveis: <?php echo $imoveis ;?></li>
+        <li>Total de imóveis alugados: <?php echo $imoveisAlugados ;?></li>
+        <li>Total de imóveis disponíveis: <?php echo $imoveisDisponiveis ;?></li>
     </ul>
 </body>
 </html>

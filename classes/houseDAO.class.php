@@ -29,9 +29,9 @@
                          VALUES ('$idImovel', '$state', '$city', '$district', '$street', '$number')";
             $dbh->query($sqlII);
 
-            $sqlImage = "INSERT INTO tblImagem (fk_imovel, imagem)
-                         VALUES ('$idImovel', '$image')";
-            $dbh->query($sql);
+            // $sqlImage = "INSERT INTO tblimagem (fk_imovel, imagem, fk_locador)
+            //              VALUES ('$idImovel', '$image', '$idLocador')";
+            // $dbh->query($sqlImage);
 
         } catch (PDOException $e) {
             print "Error!: " . $e->getMessage() . "<br/>";
@@ -42,34 +42,61 @@
 	/**
 	 * @return mixed
 	 */
+    // lista os imóveis de um locador
 	public function list($id) {
         try {
             $dbh = new PDO('mysql:host=localhost;dbname=e_rent', 'root', '');
 
             return $dbh->query("SELECT * from tblendereco join tblimovel on tblendereco.fk_imovel = tblimovel.idImovel
                                 join tbllocador on tblimovel.fk_locador = tbllocador.idLocador where tbllocador.idLocador = $id");
+
+            // lista os imóveis após leitura da imagem funcionar
+            // return $dbh->query("SELECT * from tblendereco join tblimovel on tblendereco.fk_imovel = tblimovel.idImovel
+            //                     join tbllocador on tblimovel.fk_locador = tbllocador.idLocador
+            //                     join tblimagem on tblimovel.idImovel = tblimagem.fk_imovel where tbllocador.idLocador = $id;");
         } catch (PDOException $e) {
             print "Error!: " . $e->getMessage() . "<br/>";
             die();
         }
 	}
+    /**
+	 * @return mixed
+	 */
+    // lista os imóveis de um locatario
+	public function listLoc($id) {
+        try {
+            $dbh = new PDO('mysql:host=localhost;dbname=e_rent', 'root', '');
 
+            return $dbh->query("SELECT * FROM tbllocatario JOIN tblimovel ON tbllocatario.fk_imovel = tblimovel.idImovel
+                                JOIN tblendereco ON tblendereco.fk_imovel = tblimovel.idImovel WHERE fk_usuario = $id");
+
+        } catch (PDOException $e) {
+            print "Error!: " . $e->getMessage() . "<br/>";
+            die();
+        }
+	}
+    // lista todos os disponíveis
     public function listAll(){
         try {
             $dbh = new PDO('mysql:host=localhost;dbname=e_rent', 'root', '');
 
             return $dbh->query("SELECT * from tblendereco join tblimovel on tblendereco.fk_imovel = tblimovel.idImovel WHERE tblimovel.status = 'aberto'");
+            // seleciona com as imagens
+            // SELECT * from tblendereco join tblimovel on tblendereco.fk_imovel = tblimovel.idImovel join tblimagem on tblimovel.idImovel = tblimagem.fk_imovel WHERE tblimovel.status = 'aberto';
         } catch (PDOException $e) {
             print "Error!: " . $e->getMessage() . "<br/>";
             die();
         } 
     }
 
+    // lista imóvel específico para edição/delete
     public function searchImovel($id) {
         try {
             $dbh = new PDO('mysql:host=localhost;dbname=e_rent', 'root', '');
 
             return $dbh->query("SELECT * from tblendereco join tblimovel on tblendereco.fk_imovel = tblimovel.idImovel WHERE tblimovel.idImovel = $id");
+            // seleciona com a imagem
+            // SELECT * from tblendereco join tblimovel on tblendereco.fk_imovel = tblimovel.idImovel join tblimagem on tblimovel.idImovel = tblimagem.fk_imovel WHERE tblimovel.idImovel = 117; 
         } catch (PDOException $e) {
             print "Error!: " . $e->getMessage() . "<br/>";
             die();
@@ -79,17 +106,54 @@
 	/**
 	 * @return mixed
 	 */
+    // lista um imóvel em específico
 	public function search($id) {
         try {
             $dbh = new PDO('mysql:host=localhost;dbname=e_rent', 'root', '');
 
             return $dbh->query("SELECT * from tblendereco join tblimovel on tblendereco.fk_imovel = tblimovel.idImovel WHERE tblimovel.idImovel = $id")->fetch();
+            // seleciona com a imagem
+            // SELECT * from tblendereco join tblimovel on tblendereco.fk_imovel = tblimovel.idImovel join tblimagem on tblimovel.idImovel = tblimagem.fk_imovel WHERE tblimovel.idImovel = 117;
         } catch (PDOException $e) {
             print "Error!: " . $e->getMessage() . "<br/>";
             die();
         }
 	}
-	
+
+    /**
+	 * @return mixed
+	 */
+    // fazer aluguel
+    public function rent($idImovel, $idLocatario){
+        try {
+            $dbh = new PDO('mysql:host=localhost;dbname=e_rent', 'root', '');
+
+            $sql = "UPDATE tblimovel SET status='alugado' WHERE idImovel = $idImovel";
+            $dbh->query($sql);
+
+            $sqlLocatario = "UPDATE tbllocatario SET fk_imovel='$idImovel' WHERE idLocatario = $idLocatario";
+            $dbh->query($sqlLocatario);
+        } catch (PDOException $e) {
+            print "Error!: " . $e->getMessage() . "<br/>";
+            die();
+        }
+    }
+
+    // desocupa imóvel
+	public function rentFinish($idImovel, $idLocatario){
+        try {
+            $dbh = new PDO('mysql:host=localhost;dbname=e_rent', 'root', '');
+
+            $sql = "UPDATE tblimovel SET status='aberto' WHERE idImovel = $idImovel";
+            $dbh->query($sql);
+
+            $sqlLocatario = "UPDATE tbllocatario SET fk_imovel=null WHERE idLocatario = $idLocatario";
+            $dbh->query($sqlLocatario);
+        } catch (PDOException $e) {
+            print "Error!: " . $e->getMessage() . "<br/>";
+            die();
+        }
+    }
 	/**
 	 *
 	 * @param mixed $id
@@ -108,14 +172,19 @@
             $idLocador = $this->getLocator();
             $idImovel = $this->getId();
             $idAdress = $this->getAdress();
+            $image = $this->getImage();
 
             $sql = "UPDATE tblimovel SET valor='$valor', descricao='$desc', status='aberto', fk_locador='$idLocador'
                         WHERE idImovel = $idImovel";
             $dbh->query($sql);
             
             $sqlII = "UPDATE tblendereco SET fk_imovel='$idImovel', estado='$state', cidade='$city', bairro='$district', rua='$street', numero='$number'
-                         WHERE idEndereco = $idAdress";
+                        WHERE idEndereco = $idAdress";
             $dbh->query($sqlII);
+
+            // $sqlImage = "UPDATE tblimagem SET fk_imovel='$idImovel', imagem='$image', fk_locador='$idLocador' 
+            //             WHERE fk_imovel = '$idImovel'";
+            // $dbh->query($sqlImage);
         } catch (PDOException $e) {
             print "Error!: " . $e->getMessage() . "<br/>";
             die();
@@ -136,6 +205,9 @@
 
             $sqlII = "DELETE FROM tblendereco WHERE idEndereco = $idEndereco";
             $dbh->query($sqlII);
+
+            // $sqlImage = "DELETE FROM tblimagem WHERE fk_imovel = $idImovel";
+            // $dbh->query($sqlImage);
         } catch (PDOException $e) {
             print "Error!: " . $e->getMessage() . "<br/>";
             die();

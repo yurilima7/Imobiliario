@@ -22,6 +22,7 @@
         
         <?php
             $idLocador = $_GET['idLocador'];
+            $idUsuario = $_GET['idUsuario'];
         ?> 
         
         <form action="../../database/houses/db_insert_house.php" method="post" enctype="multipart/form-data">
@@ -34,7 +35,8 @@
                 <input type="text" name="numero" id="number" placeholder="NÚMERO" required>
                 <input type="text" name="valor" id="price" placeholder="PREÇO DO ALUGUEL" required>
                 <textarea name="descricao" id="description" cols="30" rows="10" placeholder="DESCRIÇÃO"></textarea>
-                <input type="file" name="files" accept="image/png, image/jpeg"/>
+                <input type="file" name="imagem" accept="image/png, image/jpeg"/>
+                <input type="hidden" name="idUsuario" value="<?php echo $idUsuario; ?>">
                 <button type="submit" name="idLocador" value="<?php echo $idLocador;?>">cadastrar</button>
             </div>
         </form>

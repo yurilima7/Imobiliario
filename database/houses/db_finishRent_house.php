@@ -6,7 +6,7 @@
     $idUsuario = $_GET['idUsuario'];
 
 	$house = new houseDAO();
-	$house->rent($idImovel, $idLocatario);
+	$house->rentFinish($idImovel, $idLocatario);
 
-	header("Location: ../../pages/renter/renter.php?idUsuario=$idUsuario&idLocatario=$idLocatario");
+	header("Location: ../../pages/home_rent/rent_loc.php?idUsuario=$idUsuario&idLocatario=$idLocatario"); 
 ?>

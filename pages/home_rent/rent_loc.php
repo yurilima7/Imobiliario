@@ -11,45 +11,40 @@
 <body>
     <header class="header">
         <nav class="navBar limitContainer">
-            <?php
-                $idLocador = $_GET['idLocador']; 
-                $idUsuario = $_GET['idUsuario'];       
-            ?> 
-            <a href="../home_rent/rent_connected.php?idLocador=<?=$idLocador?>&idUsuario=<?=$idUsuario?>">
-                <h1>E-RENT</h1>
-            </a>
+            <h1>E-RENT</h1>
 
             <a class="navItem" href="#about">Sobre</a>
-            <a class="navItem" href="#">Locador</a>
+
+            <?php
+                $idUsuario = $_GET['idUsuario'];
+                $idLocatario = $_GET['idLocatario'];     
+            ?>
+
+            <a class="navItem" href="../renter/renter.php?idUsuario=<?=$idUsuario?>&idLocatario=<?=$idLocatario?>"  rel="next" target="_self">
+                Locatario
+            </a>
             <a class="navItem" href="#">Ajuda</a>
 
-            <div>
-                <?php
-                    $idLocador = $_GET['idLocador'];   
-                ?>
-
-                <a href="../add_announcement/announcement.php?idLocador=<?=$idLocador?>&idUsuario=<?=$idUsuario?>"  rel="next" target="_self">
-                    <button>Anunciar</button>
-                </a>
-            </div>
-            
+            <div class="dropItem">
+                <span><img class="userIcon" src="../../icon/user.png" alt="user"></span>
+                <div class="dropItemContent">
+                    <a class="opc" href="../home_rent/rent.php">Sair</a>
+                </div>
+            </div>        
         </nav>
     </header>
 
     <main class="main limitContainer">
-
-        <?php
+        <?php       
             require_once '../../classes/houseDAO.class.php';
-
-            $idLocador = $_GET['idLocador'];
-            
             $dao = new HouseDAO();
-            $announcement = $dao->list($idLocador);
-
+            $announcement = $dao->listAll();
+            
             foreach ($announcement as $key => $value) {
-                
-        ?>   
-            <a href="edit_announcement.php?id=<?php echo $value['idImovel'];?>&idLocador=<?=$idLocador?>&idUsuario=<?=$idUsuario?>" rel="next" target="_self">
+            ?>   
+            
+            <a href="../property_description/property_connected.php?id=<?php echo $value['idImovel'];?>
+                &idLocatario=<?=$idLocatario?>&idUsuario=<?=$idUsuario?>" rel="next" target="_self">
                 <div class="card">
                     <img class="image" src="../../images/image01.png" alt="house">
                     <div class="data">
@@ -58,7 +53,7 @@
                     </div>
                     <div class="bottomCard">
                         <li class="information">Aluguel</li>
-                        <li class="price"><?php echo $value['valor'];?></li>
+                        <li class="price">R$ <?php echo $value['valor'];?></li>
                     </div>
                 </div>
             </a>

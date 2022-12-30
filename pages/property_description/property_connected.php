@@ -31,6 +31,8 @@
         <?php
             require_once '../../classes/houseDAO.class.php';
             $id = $_GET['id'];
+            $idLocatario = $_GET['idLocatario'];
+            $idUsuario = $_GET['idUsuario'];
             
             $dao = new HouseDAO();
             $house = $dao->search($id)
@@ -41,20 +43,24 @@
             <img class="image" src="../../images/image_description.png" alt="house">
 
             <div class="cardInformation">
-                <div class="data">
-                    <li class="address"><?php echo $house['cidade'] ;?> - <?php echo $house['estado'] ;?></li>
-                    <li class="address"><?php echo $house['bairro'] ;?></li>
-                    <li class="address"><?php echo $house['rua'] ;?></li>
-                    <li class="address">Número <?php echo $house['numero'] ;?></li>
-
-                    <div class="bottomCard">
-                        <li class="price">R$ <?php echo $house['valor'] ;?></li>
-                    </div>    
-                </div>
-
-                <div>
-                    <a href="#"><button>ALUGAR</button></a>
-                </div>
+                <form action="../../database/houses/db_rent_house.php">
+                    
+                    <div class="data">
+                        <li class="address"><?php echo $house['cidade'] ;?> - <?php echo $house['estado'] ;?></li>
+                        <li class="address"><?php echo $house['bairro'] ;?></li>
+                        <li class="address"><?php echo $house['rua'] ;?></li>
+                        <li class="address">Número <?php echo $house['numero'] ;?></li>
+                        <div class="bottomCard">
+                            <li class="price">R$ <?php echo $house['valor'] ;?></li>
+                        </div>
+                    </div>
+                    <div>
+                        <input type="hidden" name="idImovel" value="<?php echo $id; ?>">
+                        <input type="hidden" name="idLocatario" value="<?php echo $idLocatario; ?>">
+                        <input type="hidden" name="idUsuario" value="<?php echo $idUsuario; ?>">
+                        <button type="submit">ALUGAR</button>
+                    </div>
+                </form>
             </div>
         </div>
 

@@ -11,6 +11,7 @@
         $idLocador = $_POST['idLocador'];
         $idImovel = $_POST['idImovel'];
         $idEndereco = $_POST['idEndereco'];
+        $idUsuario = $_POST['idUsuario'];
 
         $house = new HouseDAO();
 
@@ -27,5 +28,5 @@
 
         $house->update();
 
-        header("Location: ../../pages/locator/locator.php?idLocador=$idLocador");
+        header("Location: ../../pages/locator/locator.php?idLocador=$idLocador&idUsuario=$idUsuario");
 ?>
