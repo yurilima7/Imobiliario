@@ -41,4 +41,10 @@
             die();
         }
 	}
+    
+	/**
+	 * @return mixed
+	 */
+	public function login() {
+	}
 }

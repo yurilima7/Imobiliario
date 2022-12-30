@@ -18,6 +18,7 @@
             $street = $this->getStreet();
             $number = $this->getNumber();
             $idLocador = $this->getLocator();
+            $image = $this->getImage();
 
             $sql = "INSERT INTO tblimovel (valor, descricao, status, fk_locador) 
                                VALUES ('$valor', '$desc', 'aberto', '$idLocador')";
@@ -27,6 +28,11 @@
             $sqlII = "INSERT INTO tblendereco (fk_imovel, estado, cidade, bairro, rua, numero) 
                          VALUES ('$idImovel', '$state', '$city', '$district', '$street', '$number')";
             $dbh->query($sqlII);
+
+            $sqlImage = "INSERT INTO tblImagem (fk_imovel, imagem)
+                         VALUES ('$idImovel', '$image')";
+            $dbh->query($sql);
+
         } catch (PDOException $e) {
             print "Error!: " . $e->getMessage() . "<br/>";
             die();
