@@ -13,7 +13,7 @@
             <h1>E-RENT</h1>
 
             <a class="navItem" href="#about">Sobre</a>
-
+            
             <a class="navItem" href="../locator/locator.php"  rel="next" target="_self">
                 Locador
             </a>
@@ -31,10 +31,12 @@
 
     
     <main class="main limitContainer">   
+        
         @forelse ($imoveis as $imovel)    
             <a href="{{route('descricao_conectado', ['idImovel' => $imovel->idImovel])}}" rel="next" target="_self">
                 <div class="card">
-                    <img class="image" src="/images/image01.png" alt="house">
+                    <!-- <img class="image" src="/images/image01.png" alt="house"> -->
+                    <img class="image" src="data:image/png;base64, {{base64_encode(($imovel->imagem));}}" alt="house">
                     <div class="data">
                         <li class="address">{{$imovel->rua}}</li>
                         <li class="address">{{$imovel->bairro}}</li>

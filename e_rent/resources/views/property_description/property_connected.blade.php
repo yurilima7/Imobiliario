@@ -28,36 +28,40 @@
     </header>
 
     <main class="limitContainer">
-        
-        <div class="containerProperty">
-            <img class="image" src="../../images/image_description.png" alt="house">
+        @forelse ($imovel as $house) 
+            <div class="containerProperty">
+                <!-- <img class="image" src="../../images/image_description.png" alt="house"> -->
+                <img class="image" src="data:image/png;base64, {{base64_encode(($house->imagem));}}" alt="house">
 
-            <div class="cardInformation">
-                <div class="data">
-                    <li class="address">{{$imovel[0]->cidade}}</li>
-                    <li class="address">{{$imovel[0]->estado}}</li>
-                    <li class="address">{{$imovel[0]->rua}}</li>
-                    <li class="address">{{$imovel[0]->bairro}}</li>
+                <div class="cardInformation">
+                    <div class="data">
+                        <li class="address">{{$house->cidade}}</li>
+                        <li class="address">{{$house->estado}}</li>
+                        <li class="address">{{$house->rua}}</li>
+                        <li class="address">{{$house->bairro}}</li>
 
-                    <div class="bottomCard">
-                        <li class="price">{{$imovel[0]->valor}}</li>
-                    </div>    
-                </div>
+                        <div class="bottomCard">
+                            <li class="price">{{$house->valor}}</li>
+                        </div>    
+                    </div>
 
-                <div>
-                    <a href="#"><button>ALUGAR</button></a>
+                    <div>
+                        <a href="#"><button>ALUGAR</button></a>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <div class="lineHorizontal"></div>
+            <div class="lineHorizontal"></div>
 
-        <div class="description">
-            <h2>Descrição</h2>
-            <p>
-                {{$imovel[0]->descricao}}
-            </p>
-        </div>
+            <div class="description">
+                <h2>Descrição</h2>
+                <p>
+                    {{$house->descricao}}
+                </p>
+            </div>
+        @empty
+            <p>Sem dados</p>
+        @endforelse
     </main>
 
     <footer class="footer" id="about">
