@@ -29,8 +29,8 @@
                          VALUES ('$idImovel', '$state', '$city', '$district', '$street', '$number')";
             $dbh->query($sqlII);
 
-            $sqlImage = "INSERT INTO tblimagem (fk_imovel, imagem)
-                         VALUES ('$idImovel', '$image')";
+            $sqlImage = "INSERT INTO tblimagem (fk_imovel, imagem, fk_locador)
+                         VALUES ('$idImovel', '$image', '$idLocador')";
             $dbh->query($sqlImage);
 
         } catch (PDOException $e) {
@@ -46,8 +46,6 @@
 	public function list($id) {
         try {
             $dbh = new PDO('mysql:host=localhost;dbname=e_rent', 'root', '');
-
-            
 
             return $dbh->query(" SELECT * FROM tblimovel
             JOIN tbllocador ON tbllocador.idLocador = tblimovel.fk_locador
@@ -69,7 +67,8 @@
             $dbh = new PDO('mysql:host=localhost;dbname=e_rent', 'root', '');
 
             return $dbh->query("SELECT * FROM tbllocatario JOIN tblimovel ON tbllocatario.fk_imovel = tblimovel.idImovel
-                                JOIN tblendereco ON tblendereco.fk_imovel = tblimovel.idImovel WHERE fk_usuario = $id");
+                                JOIN tblendereco ON tblendereco.fk_imovel = tblimovel.idImovel 
+                                JOIN tblimagem on tblimagem.fk_imovel = tblimovel.idImovel WHERE fk_usuario = $id");
 
         } catch (PDOException $e) {
             print "Error!: " . $e->getMessage() . "<br/>";
@@ -82,8 +81,6 @@
             $dbh = new PDO('mysql:host=localhost;dbname=e_rent', 'root', '');
 
             return $dbh->query("SELECT * from tblendereco join tblimovel on tblendereco.fk_imovel = tblimovel.idImovel join tblimagem on tblimovel.idImovel = tblimagem.fk_imovel WHERE tblimovel.status = 'aberto';");
-            // seleciona com as imagens
-            // SELECT * from tblendereco join tblimovel on tblendereco.fk_imovel = tblimovel.idImovel join tblimagem on tblimovel.idImovel = tblimagem.fk_imovel WHERE tblimovel.status = 'aberto';
         } catch (PDOException $e) {
             print "Error!: " . $e->getMessage() . "<br/>";
             die();
@@ -95,9 +92,7 @@
         try {
             $dbh = new PDO('mysql:host=localhost;dbname=e_rent', 'root', '');
 
-            return $dbh->query("SELECT * from tblendereco join tblimovel on tblendereco.fk_imovel = tblimovel.idImovel join tblimagem on tblimovel.idImovel = tblimagem.fk_imovel WHERE tblimovel.idImovel = $id");
-            // seleciona com a imagem
-            // SELECT * from tblendereco join tblimovel on tblendereco.fk_imovel = tblimovel.idImovel join tblimagem on tblimovel.idImovel = tblimagem.fk_imovel WHERE tblimovel.idImovel = 117; 
+            return $dbh->query("SELECT * from tblendereco join tblimovel on tblendereco.fk_imovel = tblimovel.idImovel join tblimagem on tblimovel.idImovel = tblimagem.fk_imovel WHERE tblimovel.idImovel = $id"); 
         } catch (PDOException $e) {
             print "Error!: " . $e->getMessage() . "<br/>";
             die();
@@ -113,8 +108,6 @@
             $dbh = new PDO('mysql:host=localhost;dbname=e_rent', 'root', '');
 
             return $dbh->query("SELECT * from tblendereco join tblimovel on tblendereco.fk_imovel = tblimovel.idImovel join tblimagem on tblimovel.idImovel = tblimagem.fk_imovel WHERE tblimovel.idImovel = $id")->fetch();
-            // seleciona com a imagem
-            // SELECT * from tblendereco join tblimovel on tblendereco.fk_imovel = tblimovel.idImovel join tblimagem on tblimovel.idImovel = tblimagem.fk_imovel WHERE tblimovel.idImovel = 117;
         } catch (PDOException $e) {
             print "Error!: " . $e->getMessage() . "<br/>";
             die();
@@ -173,7 +166,6 @@
             $idLocador = $this->getLocator();
             $idImovel = $this->getId();
             $idAdress = $this->getAdress();
-            $image = $this->getImage();
 
             $sql = "UPDATE tblimovel SET valor='$valor', descricao='$desc', status='aberto', fk_locador='$idLocador'
                         WHERE idImovel = $idImovel";
@@ -183,9 +175,6 @@
                         WHERE idEndereco = $idAdress";
             $dbh->query($sqlII);
 
-            $sqlImage = "UPDATE tblimagem SET fk_imovel='$idImovel', imagem='$image'
-                        WHERE fk_imovel = '$idImovel'";
-            $dbh->query($sqlImage);
         } catch (PDOException $e) {
             print "Error!: " . $e->getMessage() . "<br/>";
             die();

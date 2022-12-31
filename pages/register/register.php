@@ -44,7 +44,7 @@
                 <input type="text" name="nome" id="fullName" placeholder="NOME COMPLETO" required>
                 <input type="text" name="cpf" id="CPF" placeholder="CPF" required>
                 <input type="text" name="telefone" id="telefone" placeholder="TELEFONE" required>
-                <button type="submit">ENTRAR</button>
+                <button type="submit">CADASTRAR</button>
             </div>
         </form>
     </div>

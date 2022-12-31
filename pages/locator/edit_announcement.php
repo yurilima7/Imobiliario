@@ -45,7 +45,7 @@
                 <input type="text" name="numero" id="number" placeholder="NÚMERO" value="<?php echo $value['numero'];?>" required>
                 <input type="text" name="valor" id="price" placeholder="PREÇO DO ALUGUEL" value="<?php echo $value['valor'];?>" required>
                 <textarea name="descricao" id="description" cols="30" rows="10" placeholder="DESCRIÇÃO"><?php echo $value['descricao'];?></textarea>
-                <input type="file" name="files" accept="image/png, image/jpeg"  multiple />
+                <input type="file" name="imagem" accept="image/png, image/jpeg" />
                 <input type="hidden" name="idUsuario" value="<?php echo $idUsuario; ?>">
  
                 <button type="submit" name="idLocador" value="<?php echo $idLocador;?>">Salvar</button>

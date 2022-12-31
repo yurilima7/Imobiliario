@@ -40,7 +40,7 @@
         ?>
         
         <div class="containerProperty">
-        <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($value['imagem']); ?>" alt="house" width=50%>
+        <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($house['imagem']); ?>" alt="house" width=50%>
 
             <div class="cardInformation">
                 <form action="../../database/houses/db_rent_house.php">
