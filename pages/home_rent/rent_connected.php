@@ -45,7 +45,7 @@
             ?>        
             
             <div class="card">
-                <img class="image" src="../../images/image01.png" alt="house">
+            <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($value['imagem']); ?>" alt="house" width=100%>
                 <div class="data">
                     <li class="address"><?php echo $value['rua'];?></li>
                     <li class="address"><?php echo $value['bairro'];?></li>

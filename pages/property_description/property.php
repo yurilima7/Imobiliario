@@ -36,7 +36,7 @@
         ?>
         
         <div class="containerProperty">
-            <img class="image" src="../../images/image_description.png" alt="house">
+        <img src="data:image/jpg;charset=utf8;base64,<?php echo base64_encode($house['imagem']); ?>" alt="house" width=50%>
 
             <div class="cardInformation">
                 <div class="data">

@@ -14,7 +14,7 @@
         $image = $_FILES['imagem']['tmp_name'];
         $lengthImage = $_FILES['imagem']['size'];
 
-        $temp = fopen($image, "rb");
+        $temp = fopen($image, "r");
         $content = fread($temp, $lengthImage);
         $content = addslashes($content);
         fclose($temp);
