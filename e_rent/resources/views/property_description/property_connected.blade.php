@@ -14,11 +14,16 @@
             <h1>E-RENT</h1>
 
             <a class="navItem" href="#about">Sobre</a>
-            <a class="navItem" href="#">Locador</a>
+            
+            <a class="navItem" href="{{route('locatario', ['idLocatario' => $idLocatario, 
+                'idUsuario' => $idUsuario])}}"  rel="next" target="_self">
+                Locatário
+            </a>
+
             <a class="navItem" href="#">Ajuda</a>
 
             <div class="dropItem">
-                <span><img class="userIcon" src="../../icon/user.png" alt="user"></span>
+                <span><img class="userIcon" src="/icon/user.png" alt="user"></span>
                 <div class="dropItemContent">
                     <a class="opc" href="../property_description/property.php">Sair</a>
                 </div>
@@ -34,20 +39,22 @@
                 <img class="image" src="data:image/png;base64, {{base64_encode(($house->imagem));}}" alt="house">
 
                 <div class="cardInformation">
-                    <div class="data">
-                        <li class="address">{{$house->cidade}}</li>
-                        <li class="address">{{$house->estado}}</li>
-                        <li class="address">{{$house->rua}}</li>
-                        <li class="address">{{$house->bairro}}</li>
-
-                        <div class="bottomCard">
-                            <li class="price">{{$house->valor}}</li>
-                        </div>    
-                    </div>
-
-                    <div>
-                        <a href="#"><button>ALUGAR</button></a>
-                    </div>
+                    <form action="{{route('alugar', ['idLocatario' => $idLocatario, 'idUsuario' => $idUsuario])}}" method="post">
+                        @csrf
+                        <div class="data">
+                            <li class="address">{{$house->cidade}}</li>
+                            <li class="address">{{$house->estado}}</li>
+                            <li class="address">{{$house->rua}}</li>
+                            <li class="address">{{$house->bairro}}</li>
+                            <div class="bottomCard">
+                                <li class="price">{{$house->valor}}</li>
+                            </div>
+                        </div>
+                        <div>
+                            <input type="hidden" name="idImovel" value="{{$house->idImovel}}">
+                            <button>ALUGAR</button>
+                        </div>
+                    </form>
                 </div>
             </div>
 

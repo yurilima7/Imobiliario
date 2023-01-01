@@ -14,7 +14,7 @@
 
             <a class="navItem" href="#about">Sobre</a>
             
-            <a class="navItem" href="../locator/locator.php"  rel="next" target="_self">
+            <a class="navItem" href="{{route('locador', ['idLocador' => $idLocador, 'idUsuario' => $idUsuario])}}"  rel="next" target="_self">
                 Locador
             </a>
             <a class="navItem" href="#">Ajuda</a>
@@ -22,7 +22,7 @@
             <div class="dropItem">
                 <span><img class="userIcon" src="/icon/user.png" alt="user"></span>
                 <div class="dropItemContent">
-                    <a class="opc" href="../home_rent/rent.php">Sair</a>
+                    <a class="opc" href="{{route('listagem')}}">Sair</a>
                 </div>
             </div>
             
@@ -33,20 +33,20 @@
     <main class="main limitContainer">   
         
         @forelse ($imoveis as $imovel)    
-            <a href="{{route('descricao_conectado', ['idImovel' => $imovel->idImovel])}}" rel="next" target="_self">
-                <div class="card">
-                    <!-- <img class="image" src="/images/image01.png" alt="house"> -->
-                    <img class="image" src="data:image/png;base64, {{base64_encode(($imovel->imagem));}}" alt="house">
-                    <div class="data">
-                        <li class="address">{{$imovel->rua}}</li>
-                        <li class="address">{{$imovel->bairro}}</li>
-                    </div>
-                    <div class="bottomCard">
-                        <li class="information">Aluguel</li>
-                        <li class="price">R$ {{$imovel->valor}}</li>
-                    </div>
+          
+            <div class="card">
+                <!-- <img class="image" src="/images/image01.png" alt="house"> -->
+                <img class="image" src="data:image/png;base64, {{base64_encode(($imovel->imagem));}}" alt="house">
+                <div class="data">
+                    <li class="address">{{$imovel->rua}}</li>
+                    <li class="address">{{$imovel->bairro}}</li>
                 </div>
-            </a>
+                <div class="bottomCard">
+                    <li class="information">Aluguel</li>
+                    <li class="price">R$ {{$imovel->valor}}</li>
+                </div>
+            </div>
+          
         @empty
             <p>Sem imóveis</p>
         @endforelse

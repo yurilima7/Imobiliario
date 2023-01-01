@@ -5,39 +5,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="shortcut icon" href="/icon/logo.ico" type="image/x-icon">
     <title>E-RENT</title>
 </head>
 <body>
     <header class="header">
         <nav class="navBar limitContainer">
-            <h1>E-RENT</h1>
+            <a href="{{route('home_locador', ['idLocador' => $idLocador, 'idUsuario' => $idUsuario])}}">
+                <h1>E-RENT</h1>
+            </a>
 
             <a class="navItem" href="#about">Sobre</a>
-
-            <a class="navItem" href="{{route('locatario', ['idLocatario' => $idLocatario, 
-                'idUsuario' => $idUsuario])}}"  rel="next" target="_self">
-                Locatário
-            </a>
-            
+            <a class="navItem" href="#">Locador</a>
             <a class="navItem" href="#">Ajuda</a>
 
-            <div class="dropItem">
-                <span><img class="userIcon" src="/icon/user.png" alt="user"></span>
-                <div class="dropItemContent">
-                    <a class="opc" href="{{route('listagem')}}">Sair</a>
-                </div>
+            <div>
+                <a href="{{route('registrar_imovel', ['idUsuario' => $idUsuario, 'idLocador' => $idLocador])}}"  rel="next" target="_self">
+                    <button>Anunciar</button>
+                </a>
             </div>
             
         </nav>
     </header>
 
-    
-    <main class="main limitContainer">   
-        @forelse ($imoveis as $imovel)    
-            <a href="{{route('descricao_conectado', ['idImovel' => $imovel->idImovel, 
-                'idLocatario' => $idLocatario, 'idUsuario' => $idUsuario])}}" rel="next" target="_self">
+    <main class="main limitContainer">
+        @forelse ($imoveis as $imovel)   
+            <a href="{{route('atualizar_imovel', ['idUsuario' => $idUsuario, 
+                'idLocador' => $idLocador, 'idImovel' => $imovel->idImovel])}}" rel="next" target="_self">
                 <div class="card">
-                    <!-- <img class="image" src="/images/image01.png" alt="house"> -->
+                    <!-- <img class="image" src="../../images/image01.png" alt="house"> -->
                     <img class="image" src="data:image/png;base64, {{base64_encode(($imovel->imagem));}}" alt="house">
                     <div class="data">
                         <li class="address">{{$imovel->rua}}</li>
@@ -53,7 +49,6 @@
             <p>Sem imóveis</p>
         @endforelse
     </main>
-    
 
     <footer class="footer" id="about">
         <p class="limitContainer">

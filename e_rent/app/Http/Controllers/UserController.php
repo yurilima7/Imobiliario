@@ -39,7 +39,18 @@ class UserController extends Controller
             'telefone' => $request->telefone,
         ]);
 
-        return view('rent.rent_connected', ['user' => $user]);
+        if($request->locador ==  1) {
+            
+        } else {
+
+        }
+
+        $imoveis = DB::table('tblendereco')
+            ->join('tblimovel', 'tblendereco.fk_imovel', '=', 'tblimovel.idImovel')
+            ->join('tblimagem', 'tblimovel.idImovel', '=', 'tblimagem.fk_imovel')
+            ->where('tblimovel.status', '=', 'aberto')->get();
+
+        return view('rent.rent', compact('imoveis'));
     }
 
     // LOGIN
@@ -47,22 +58,28 @@ class UserController extends Controller
         $user = DB::table('tblusuario')
         ->where('tblusuario.email', '=', $request->email)->get();
 
+        $idUsuario = $user[0]->idUsuario;
+
         $imoveis = DB::table('tblendereco')
             ->join('tblimovel', 'tblendereco.fk_imovel', '=', 'tblimovel.idImovel')
             ->join('tblimagem', 'tblimovel.idImovel', '=', 'tblimagem.fk_imovel')
             ->where('tblimovel.status', '=', 'aberto')->get();
-
+        
         if ($user[0]->senha == $request->senha) {
             if ($user[0]->isLocator == 1) {
                 $locador = DB::table('tbllocador')
-                ->where('tbllocador.fk_usuario', '=', $user[0]->idUsuario)->get();
+                ->where('tbllocador.fk_usuario', '=', $idUsuario)->get();
 
-                return view("rent.rent_connected", compact('imoveis', 'locador', 'user'));
+                $idLocador = $locador[0]->idLocador;
+
+                return view("rent.rent_connected", compact('imoveis', 'idLocador', 'idUsuario'));
             } else {
                 $locatario = DB::table('tbllocatario')
-                ->where('tbllocatario.fk_usuario', '=', $user[0]->idUsuario)->get();
+                ->where('tbllocatario.fk_usuario', '=', $idUsuario)->get();
 
-                return view("rent.rent_loc", compact('imoveis', 'locatario', 'user'));
+                $idLocatario = $locatario[0]->idLocatario;
+
+                return view("rent.rent_loc", compact('imoveis', 'idLocatario', 'idUsuario'));
             }
         } else {
   
