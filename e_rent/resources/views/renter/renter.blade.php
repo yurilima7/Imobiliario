@@ -27,8 +27,7 @@
             <a href="{{route('edita_aluguel', ['idLocatario' => $idLocatario, 
                     'idUsuario' => $idUsuario, 'idImovel' => $house->idImovel])}}" rel="next" target="_self">
                 <div class="card">
-                    <!-- <img class="image" src="../../images/image01.png" alt="house"> -->
-                    <img class="image" src="data:image/png;base64, {{base64_encode(($house->imagem));}}" alt="house">
+                    <img class="image" src="/image/{{$house->imagem }}" alt="house">
                     <div class="data">
                         <li class="address">{{$house->rua}}</li>
                         <li class="address">{{$house->bairro}}</li>

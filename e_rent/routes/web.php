@@ -53,3 +53,6 @@ Route::post('/deletarImovel/{idUsuario}/{idLocador}/{idImovel}', 'App\Http\Contr
 Route::post('/alugarImovel/{idLocatario}/{idUsuario}', 'App\Http\Controllers\ImovelController@alugaImovel')->name('alugar');
 Route::get('/atualizarAluguel/{idUsuario}/{idLocatario}/{idImovel}', 'App\Http\Controllers\ImovelController@updateHouseAluguel')->name('edita_aluguel');
 Route::post('/atualizarAluguel/{idUsuario}/{idLocatario}/{idImovel}', 'App\Http\Controllers\ImovelController@updateAluguel')->name('desocupar');
+
+// Relatório
+Route::get('/relatorio', 'App\Http\Controllers\RelatorioController@relatorioSistema');

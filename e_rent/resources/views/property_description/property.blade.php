@@ -11,7 +11,9 @@
 <body>
     <header class="header">
         <nav class="navBar limitContainer">
-            <h1>E-RENT</h1>
+            <a href="{{route('listagem')}}">
+                <h1>E-RENT</h1>
+            </a>
 
             <a class="navItem" href="#about">Sobre</a>
             <a class="navItem" href="#">Locador</a>
@@ -28,8 +30,7 @@
     <main class="limitContainer">
         @forelse ($imovel as $house) 
             <div class="containerProperty">
-                <!-- <img class="image" src="../../images/image_description.png" alt="house"> -->
-                <img class="image" src="data:image/png;base64, {{base64_encode(($house->imagem));}}" alt="house">
+                <img class="image" src="/image/{{$house->imagem }}" alt="house">
 
                 <div class="cardInformation">
                     <div class="data">

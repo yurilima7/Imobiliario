@@ -101,11 +101,17 @@ class ImovelController extends Controller
             'numero' => $request->numero,
         ]); 
 
-        Imagem :: create([
-            'fk_imovel' => $imovel->idImovel,
-            'imagem' => $request->imagem,
-            'fk_locador' => $idLocador,
-        ]);
+        if($image = $request->file('imagem')) {
+            $destinationPath = 'image/';
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $profileImage);
+
+            Imagem :: create([
+                'fk_imovel' => $imovel->idImovel,
+                'imagem' => $profileImage,
+                'fk_locador' => $idLocador,
+            ]);
+        }
 
         $imoveis = DB::table('tblimovel')
             ->join('tbllocador', 'tbllocador.idLocador', '=', 'tblimovel.fk_locador')
@@ -131,7 +137,7 @@ class ImovelController extends Controller
         $imovel->update([
             'valor' => $request->valor,
             'descricao' => $request->descricao,
-            'status' => 'aberto',
+            'status' => $imovel->status,
             'fk_locador' => $idLocador,
         ]);
 
@@ -145,12 +151,18 @@ class ImovelController extends Controller
             'numero' => $request->numero,
         ]);
 
-        $imagem = Imagem::findOrFail($request->idImagem);
-        $imagem->update([
-            'fk_imovel' => $request->idImovel,
-            'imagem' => $request->imagem,
-            'fk_locador' => $idLocador,
-        ]);
+        if($image = $request->file('imagem')) {
+            $destinationPath = 'image/';
+            $profileImage = date('YmdHis') . "." . $image->getClientOriginalExtension();
+            $image->move($destinationPath, $profileImage);
+
+            $imagem = Imagem::findOrFail($request->idImagem);
+            $imagem->update([
+                'fk_imovel' => $request->idImovel,
+                'imagem' => $profileImage,
+                'fk_locador' => $idLocador,
+            ]);
+        } 
 
         $imoveis = DB::table('tblimovel')
             ->join('tbllocador', 'tbllocador.idLocador', '=', 'tblimovel.fk_locador')

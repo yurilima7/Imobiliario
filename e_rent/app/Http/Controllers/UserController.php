@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Locador;
+use App\Models\Locatario;
 use Illuminate\Support\Facades\DB;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -39,10 +41,15 @@ class UserController extends Controller
             'telefone' => $request->telefone,
         ]);
 
-        if($request->locador ==  1) {
-            
+        if($request->locator ==  1) {
+            Locador::create([
+                'cnpj'=>'',
+                'fk_usuario' => $idUsuario,
+            ]);
         } else {
-
+            Locatario::create([
+                'fk_usuario' => $idUsuario,
+            ]);
         }
 
         $imoveis = DB::table('tblendereco')

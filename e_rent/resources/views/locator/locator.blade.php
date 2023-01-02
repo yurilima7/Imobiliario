@@ -33,8 +33,7 @@
             <a href="{{route('atualizar_imovel', ['idUsuario' => $idUsuario, 
                 'idLocador' => $idLocador, 'idImovel' => $imovel->idImovel])}}" rel="next" target="_self">
                 <div class="card">
-                    <!-- <img class="image" src="../../images/image01.png" alt="house"> -->
-                    <img class="image" src="data:image/png;base64, {{base64_encode(($imovel->imagem));}}" alt="house">
+                    <img class="image" src="/image/{{ $imovel->imagem }}" alt="house">
                     <div class="data">
                         <li class="address">{{$imovel->rua}}</li>
                         <li class="address">{{$imovel->bairro}}</li>

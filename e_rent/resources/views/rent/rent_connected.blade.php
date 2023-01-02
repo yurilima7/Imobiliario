@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="/css/style.css">
+    <link rel="shortcut icon" href="/icon/logo.ico" type="image/x-icon">
     <title>E-RENT</title>
 </head>
 <body>
@@ -35,8 +36,7 @@
         @forelse ($imoveis as $imovel)    
           
             <div class="card">
-                <!-- <img class="image" src="/images/image01.png" alt="house"> -->
-                <img class="image" src="data:image/png;base64, {{base64_encode(($imovel->imagem));}}" alt="house">
+                <img class="image" src="/image/{{$imovel->imagem }}" alt="house">
                 <div class="data">
                     <li class="address">{{$imovel->rua}}</li>
                     <li class="address">{{$imovel->bairro}}</li>

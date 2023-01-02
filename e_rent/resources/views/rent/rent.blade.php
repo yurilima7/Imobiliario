@@ -15,7 +15,7 @@
 
             <a class="navItem" href="#about">Sobre</a>
 
-            <a class="navItem" href="../locator/locator.php"  rel="next" target="_self">
+            <a class="navItem" href="#"  rel="next" target="_self">
                 Locador
             </a>
             <a class="navItem" href="#">Ajuda</a>
@@ -33,8 +33,7 @@
             
             <a href="{{route('descricao', ['idImovel' => $imovel->idImovel])}}" rel="next" target="_self">
                 <div class="card">
-                    <!-- <img class="image" src="/images/image01.png" alt="house"> -->
-                    <img class="image" src="data:image/png;base64, {{base64_encode(($imovel->imagem));}}" alt="house">
+                    <img class="image" src="/image/{{$imovel->imagem }}" alt="house">
                     <div class="data">
                         <li class="address">{{$imovel->rua}}</li>
                         <li class="address">{{$imovel->bairro}}</li>

@@ -35,8 +35,7 @@
     <main class="limitContainer">
         @forelse ($imovel as $house) 
             <div class="containerProperty">
-                <!-- <img class="image" src="../../images/image_description.png" alt="house"> -->
-                <img class="image" src="data:image/png;base64, {{base64_encode(($house->imagem));}}" alt="house">
+                <img class="image" src="/image/{{$house->imagem }}" alt="house">
 
                 <div class="cardInformation">
                     <form action="{{route('alugar', ['idLocatario' => $idLocatario, 'idUsuario' => $idUsuario])}}" method="post">

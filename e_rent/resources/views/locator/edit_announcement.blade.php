@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" type="text/css" href="/css/announcement.css">
     <link rel="shortcut icon" href="/icon/logo.ico" type="image/x-icon">
-    <title>Novo anúncio</title>
+    <title>Editar anúncio</title>
 </head>
 <body>
     <header class="header">
@@ -21,11 +21,13 @@
         </div>
         @forelse ($imovel as $house)
             <form action="{{route('atualizar', ['idUsuario' => $idUsuario, 
-                    'idLocador' => $idLocador, 'idImovel' => $house->idImovel])}}" method="post">
+                    'idLocador' => $idLocador, 'idImovel' => $house->idImovel])}}" method="post" enctype="multipart/form-data">
                 @csrf
+                
                 <div class="form">
                     <input type="hidden" name="idEndereco" value="{{$house->idEndereco}}">
                     <input type="hidden" name="idImagem" value="{{$house->idImagem}}">
+                    <input type="hidden" name="imagem" value="{{$house->imagem}}">
                     <input type="text" name="estado" id="state" placeholder="ESTADO" value="{{$house->estado}}" required>
                     <input type="text" name="cidade" id="city" placeholder="CIDADE" value="{{$house->cidade}}" required>
                     <input type="text" name="bairro" id="district" placeholder="BAIRRO" value="{{$house->bairro}}" required>
@@ -34,6 +36,7 @@
                     <input type="text" name="valor" id="price" placeholder="PREÇO DO ALUGUEL" value="{{$house->valor}}" required>
                     <textarea name="descricao" id="description" cols="30" rows="10" placeholder="DESCRIÇÃO">{{$house->descricao}}</textarea>
                     <input type="file" name="imagem" accept="image/png, image/jpeg" />
+                    <img class="image" src="/image/{{ $house->imagem }}" alt="house">
     
                     <button>Salvar</button>
                 </div>
